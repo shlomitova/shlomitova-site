@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shlomi Tova | Nature & Wildlife Photography</title>
     <style>
+        /* הגדרות כלליות */
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
         
         /* תמונת שער (Hero) */
@@ -21,7 +22,7 @@
         .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 20px auto; }
         p.subtitle { font-size: 0.9rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
 
-        /* מבנה הגלריות */
+        /* הגדרות גלריה */
         .gallery-section { padding: 100px 10%; background: #050505; border-top: 1px solid #1a1a1a; }
         .section-title { text-align: center; font-size: 2rem; letter-spacing: 5px; margin-bottom: 60px; color: #fff; font-weight: 200; text-transform: uppercase; }
         .section-title span { color: #c5a059; display: block; font-size: 0.8rem; margin-top: 10px; letter-spacing: 2px; }
@@ -29,10 +30,10 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 50px;
+            gap: 60px;
         }
 
-        .gallery-item { overflow: hidden; margin-bottom: 20px; }
+        .gallery-item { overflow: hidden; margin-bottom: 30px; }
         .image-container { 
             position: relative; width: 100%; padding-top: 66.66%; 
             overflow: hidden; border-radius: 2px; background: #111;
@@ -44,17 +45,18 @@
         .gallery-item:hover img { transform: scale(1.03); }
         
         .item-caption {
-            margin-top: 15px; text-align: right; font-size: 1.1rem;
+            margin-top: 20px; text-align: right; font-size: 1.2rem;
             color: #fff; letter-spacing: 1px; font-weight: 300;
         }
-        .item-sub-caption { font-size: 0.85rem; color: #666; margin-top: 5px; display: block; }
+        .item-sub-caption { font-size: 0.85rem; color: #777; margin-top: 5px; display: block; letter-spacing: 1px; }
 
         /* התאמה לנייד */
         @media (max-width: 768px) {
-            .hero { justify-content: center; }
-            .content-box { margin-right: 0; width: 85%; }
-            .gallery-grid { grid-template-columns: 1fr; }
+            .hero { justify-content: center; background-position: 70% center; }
+            .content-box { margin-right: 0; width: 85%; padding: 30px; }
+            .gallery-grid { grid-template-columns: 1fr; gap: 40px; }
             .gallery-section { padding: 60px 5%; }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -81,6 +83,20 @@
             </div>
             
             </div>
+    </section>
+
+    <section id="mammals" class="gallery-section">
+        <h2 class="section-title">יונקים<span>MAMMALS</span></h2>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="image-container">
+                    <img src="_DSC4996-Edit-2.jpg" alt="יונקים">
+                </div>
+                <div class="item-caption">יונק ראשון בגלריה</div>
+                <span class="item-sub-caption">מיקום הצילום | ציוד ונתונים</span>
+            </div>
+        </div>
     </section>
 
     </body>
