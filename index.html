@@ -63,11 +63,20 @@
 
         /* התאמה לנייד */
         @media (max-width: 768px) {
-            .hero { justify-content: center; background-position: 70% center; }
-            .content-box { margin-right: 0; width: 85%; padding: 35px; }
+            .hero { 
+                justify-content: center; 
+                background-position: 40% center; /* מזיז את התמונה כך שהגדי יהיה במרכז המסך הצר */
+            }
+            .content-box { 
+                margin-right: 0; 
+                width: 85%; 
+                padding: 30px;
+                background: rgba(10, 10, 10, 0.6); /* מעט יותר שקוף במובייל */
+            }
             .gallery-grid { grid-template-columns: 1fr; gap: 40px; }
             .gallery-section { padding: 70px 6%; }
-            h1 { font-size: 2rem; }
+            h1 { font-size: 1.8rem; letter-spacing: 4px; }
+            .section-title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -135,15 +144,14 @@
             const imgSrc = element.querySelector('img').src;
             document.getElementById('lightbox-img').src = imgSrc;
             document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden'; // מונע גלילה כשהתמונה פתוחה
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto'; // מחזיר גלילה
+            document.body.style.overflow = 'auto';
         }
 
-        // סגירה עם מקש ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 closeLightbox();
