@@ -6,31 +6,75 @@
     <title>Shlomi Tova | Nature & Wildlife Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* הגדרות בסיס */
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
-        .hero { height: 100vh; width: 100%; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('_DSC4996-Edit-2.jpg') no-repeat center center; background-size: cover; display: flex; align-items: center; justify-content: flex-end; }
-        .content-box { margin-right: 8%; padding: 45px; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); text-align: center; max-width: 400px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        
+        /* תמונת שער (Hero) */
+        .hero {
+            height: 100vh; width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('_DSC4996-Edit-2.jpg') no-repeat center center;
+            background-size: cover; display: flex; align-items: center; justify-content: flex-end;
+        }
+        .content-box {
+            margin-right: 8%; padding: 45px; background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); text-align: center; max-width: 400px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
         h1 { font-size: 2.6rem; font-weight: 200; letter-spacing: 7px; margin: 0; text-transform: uppercase; }
         .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 25px auto; }
         p.subtitle { font-size: 0.9rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; margin: 0 0 30px 0; }
+
+        /* לחצני יצירת קשר */
         .social-links { display: flex; justify-content: center; gap: 25px; margin-top: 10px; }
         .social-links a { color: #fff; font-size: 1.5rem; transition: 0.3s; text-decoration: none; }
         .social-links a:hover { color: #c5a059; transform: translateY(-3px); }
+
+        /* גלריות */
         .gallery-section { padding: 100px 10%; background: #050505; border-top: 1px solid #1a1a1a; }
         .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 70px; color: #fff; font-weight: 200; text-transform: uppercase; }
         .section-title span { color: #c5a059; display: block; font-size: 0.85rem; margin-top: 12px; letter-spacing: 3px; font-weight: 400; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+
         .gallery-item { overflow: hidden; margin-bottom: 30px; cursor: pointer; }
-        .image-container { position: relative; width: 100%; padding-top: 66.66%; overflow: hidden; border-radius: 2px; background: #111; }
-        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .image-container { 
+            position: relative; width: 100%; padding-top: 66.66%; 
+            overflow: hidden; border-radius: 2px; background: #111;
+        }
+        .image-container img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; transition: transform 0.8s ease;
+        }
         .gallery-item:hover img { transform: scale(1.04); }
+        
         .item-caption { margin-top: 18px; text-align: right; font-size: 1.2rem; color: #fff; font-weight: 300; letter-spacing: 1px; }
         .item-english-caption { font-size: 0.9rem; color: #c5a059; display: block; margin-top: 4px; font-weight: 300; letter-spacing: 1px; text-align: right; }
         .item-sub-caption { font-size: 0.85rem; color: #777; margin-top: 8px; display: block; letter-spacing: 1px; text-align: right; }
-        .lightbox { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); align-items: center; justify-content: center; }
+
+        /* Lightbox */
+        .lightbox {
+            display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); align-items: center; justify-content: center;
+        }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 90%; max-height: 90%; box-shadow: 0 0 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
-        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 1001; transition: 0.3s; }
-        @media (max-width: 768px) { .hero { justify-content: center; background-position: 40% center; } .content-box { margin-right: 0; width: 85%; padding: 35px; background: rgba(10, 10, 10, 0.6); } .gallery-grid { grid-template-columns: 1fr; gap: 40px; } .gallery-section { padding: 70px 6%; } h1 { font-size: 1.8rem; } }
+        .close-lightbox {
+            position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px;
+            font-weight: bold; cursor: pointer; z-index: 1001; transition: 0.3s;
+        }
+        .close-lightbox:hover { color: #c5a059; }
+
+        @media (max-width: 768px) {
+            .hero { justify-content: center; background-position: 40% center; }
+            .content-box { margin-right: 0; width: 85%; padding: 35px; background: rgba(10, 10, 10, 0.6); }
+            .gallery-grid { grid-template-columns: 1fr; gap: 40px; }
+            .gallery-section { padding: 70px 6%; }
+            h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -40,6 +84,7 @@
             <h1>SHLOMI TOVA</h1>
             <div class="gold-line"></div>
             <p class="subtitle">Nature • Wildlife • Astrophotography</p>
+            
             <div class="social-links">
                 <a href="mailto:shlomitova@gmail.com" title="שלח מייל"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.facebook.com/shlomi.tova" target="_blank" rel="noopener noreferrer" title="פייסבוק"><i class="fab fa-facebook-f"></i></a>
@@ -70,12 +115,6 @@
                 <span class="item-english-caption">Jungle Cat</span>
                 <span class="item-sub-caption">עמק החולה</span>
             </div>
-        </div>
-    </section>
-
-    <section id="desert" class="gallery-section">
-        <h2 class="section-title">חיות בר במדבר<span>DESERT WILDLIFE</span></h2>
-        <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox(this)">
                 <div class="image-container"><img src="onagers in the desert.jpg" alt="פראים במדבר"></div>
                 <div class="item-caption">פראים במדבר</div>
@@ -101,7 +140,7 @@
                 <span class="item-sub-caption">Wildlife Photography</span>
             </div>
             <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="White-fronted Goose.jpg" alt="אווז לבן מצח"></div>
+                <div class="image-container"><img src="White fronted Goose.jpg" alt="אווז לבן מצח"></div>
                 <div class="item-caption">אווז לבן-מצח</div>
                 <span class="item-english-caption">Greater White-fronted Goose</span>
                 <span class="item-sub-caption">Wildlife Photography</span>
