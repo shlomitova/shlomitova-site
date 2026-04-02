@@ -25,22 +25,22 @@
 
         .hero { 
             height: 100vh; width: 100vw;
-            /* contain מבטיח שהתמונה לא תיחתך לעולם */
-            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%), url('ibex.jpg') no-repeat center center; 
-            background-size: contain; 
+            /* שימוש ב-cover יחד עם התמקדמות בצד ימין */
+            background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%), url('ibex.jpg') no-repeat right center; 
+            background-size: cover; 
             display: flex; align-items: center; 
-            justify-content: flex-end; /* בגלל ה-RTL, זה מצמיד לשמאל הפיזי */
+            justify-content: flex-end; /* הצמדת הבלוק לשמאל הפיזי */
             padding: 0 8%;
             box-sizing: border-box;
         }
 
         .hero-content { 
             max-width: 400px; 
-            text-align: center; 
+            text-align: center; /* יישור טקסט פנימי למרכז */
             z-index: 10;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center; /* ממרכז את האלמנטים בתוך הבלוק */
         }
         
         .hero-content h1 { 
@@ -66,6 +66,7 @@
         @media (max-width: 768px) {
             .hero { 
                 justify-content: center; padding: 0 5%; 
+                /* במובייל ממקדים למרכז כי אין ברירה */
                 background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('ibex.jpg') no-repeat center center;
                 background-size: cover;
             }
