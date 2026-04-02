@@ -17,12 +17,13 @@
         .about-page { 
             height: 100vh; display: flex; align-items: center; 
             box-sizing: border-box;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('common_kestrel.jpg') no-repeat center center; 
+            /* עוצמת תאורה של דף הבית לנייח - 0.6 */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg') no-repeat center center; 
             background-size: cover;
             position: relative;
         }
 
-        /* --- הגדרות למחשב נייח (Desktop) - ללא שינוי --- */
+        /* --- הגדרות למחשב נייח (Desktop) --- */
         @media (min-width: 769px) {
             .about-page { 
                 justify-content: flex-end; 
@@ -45,18 +46,25 @@
             .gold-line { margin: 25px auto; }
         }
 
-        /* --- הגדרות לנייד (Mobile) - תיקון הצמדה לתחתית --- */
+        /* --- הגדרות לנייד (Mobile) --- */
         @media (max-width: 768px) {
+            .about-page { 
+                /* עוצמת תאורה של דף הבית לנייד - 0.2 */
+                background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg') no-repeat center center;
+                background-size: cover;
+                background-position: center center;
+            }
+            
             .about-container { 
                 position: absolute;
-                bottom: 40px; /* מצמיד חזק לתחתית הרחק מהראש של הבז */
+                bottom: 40px; 
                 left: 50%;
                 transform: translateX(-50%);
                 background: none; 
                 backdrop-filter: none;
                 border: none;
                 box-shadow: none;
-                width: 80%; /* כיווץ הטקסט */
+                width: 80%; 
                 text-align: center;
                 display: flex;
                 flex-direction: column;
