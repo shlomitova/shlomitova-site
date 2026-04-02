@@ -4,74 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shlomi Tova | Nature & Wildlife Photography</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; overflow: hidden; }
         
-        /* תפריט ניווט */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 0;
+            background: rgba(5, 5, 5, 0.4); backdrop-filter: blur(5px);
+            padding: 20px 0;
         }
         .nav-container { display: flex; justify-content: center; gap: 40px; }
-        .nav-container a { color: #aaa; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .nav-container a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; font-weight: 300; }
         .nav-container a:hover { color: #c5a059; }
 
-        /* שער */
         .hero {
             height: 100vh; width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('_DSC4996-Edit-2.jpg') no-repeat center center;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('_DSC4996-Edit-2.jpg') no-repeat center center;
             background-size: cover; display: flex; align-items: center; justify-content: flex-end;
         }
         .content-box {
-            margin-right: 8%; padding: 45px; background: rgba(10, 10, 10, 0.8);
+            margin-right: 8%; padding: 45px; background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); text-align: center; max-width: 400px;
         }
         h1 { font-size: 2.6rem; font-weight: 200; letter-spacing: 7px; margin: 0; text-transform: uppercase; }
         .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 25px auto; }
-        .subtitle { font-size: 0.9rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; margin-bottom: 30px; }
-
-        /* גלריות */
-        .gallery-section { padding: 120px 10% 60px; background: #050505; border-top: 1px solid #1a1a1a; }
-        .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 70px; font-weight: 200; text-transform: uppercase; }
-        .section-title span { color: #c5a059; display: block; font-size: 0.85rem; margin-top: 12px; letter-spacing: 3px; font-weight: 400; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
-        .gallery-item { cursor: pointer; margin-bottom: 30px; }
-        .image-container { position: relative; width: 100%; padding-top: 66.66%; overflow: hidden; border-radius: 2px; }
-        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
-        .gallery-item:hover img { transform: scale(1.04); }
-        .item-caption { margin-top: 18px; text-align: right; font-size: 1.2rem; font-weight: 300; }
-        .item-english-caption { font-size: 0.9rem; color: #c5a059; display: block; margin-top: 4px; text-align: right; }
-
-        /* Lightbox */
-        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); align-items: center; justify-content: center; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90%; }
-        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; }
-
-        footer { padding: 40px; text-align: center; color: #555; font-size: 0.8rem; letter-spacing: 1px; border-top: 1px solid #111; }
+        .subtitle { font-size: 0.9rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
 
         @media (max-width: 768px) {
+            .hero { justify-content: center; align-items: flex-end; }
+            .content-box { margin-right: 0; margin-bottom: 80px; width: 85%; }
             .nav-container { gap: 20px; }
-            .hero { justify-content: center; align-items: flex-end; background-position: 40% center; }
-            .content-box { margin-right: 0; margin-bottom: 50px; width: 85%; padding: 30px; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
-            <a href="#mammals">יונקים</a>
-            <a href="#birds">ציפורים</a>
+            <a href="mammals.html">יונקים</a>
+            <a href="birds.html">ציפורים</a>
             <a href="contact.html">צור קשר</a>
         </div>
     </nav>
-
     <section class="hero">
         <div class="content-box">
             <h1>SHLOMI TOVA</h1>
@@ -79,81 +51,5 @@
             <p class="subtitle">Nature • Wildlife • Astrophotography</p>
         </div>
     </section>
-
-    <section id="mammals" class="gallery-section">
-        <h2 class="section-title">יונקים<span>MAMMALS</span></h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="fox cub twins.jpg" alt="גורי שועלים"></div>
-                <div class="item-caption">גורי שועל מצוי</div>
-                <span class="item-english-caption">Red Fox Cubs</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="a female ibex with her kid.jpg" alt="יעל וגדי"></div>
-                <div class="item-caption">נקבת יעל נובי וגדי</div>
-                <span class="item-english-caption">Nubian Ibex Female & Kid</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="jungle cat.jpg" alt="חתול ביצות"></div>
-                <div class="item-caption">חתול ביצות</div>
-                <span class="item-english-caption">Jungle Cat</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="onagers in the desert.jpg" alt="פראים במדבר"></div>
-                <div class="item-caption">פראים במדבר</div>
-                <span class="item-english-caption">Onagers in the Desert</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="birds" class="gallery-section">
-        <h2 class="section-title">ציפורים<span>BIRDS</span></h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="Common Kestrel.jpg" alt="בז מצוי"></div>
-                <div class="item-caption">בז מצוי</div>
-                <span class="item-english-caption">Common Kestrel</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="male Montagus harrier.jpg" alt="זרוע שדות זכר"></div>
-                <div class="item-caption">זרוע שדות (זכר)</div>
-                <span class="item-english-caption">Male Montagu's Harrier</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="White fronted Goose.jpg" alt="אווז לבן מצח"></div>
-                <div class="item-caption">אווז לבן-מצח</div>
-                <span class="item-english-caption">Greater White-fronted Goose</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="male Hen Harrier.jpg" alt="זרוע תכול זכר"></div>
-                <div class="item-caption">זרוע תכול (זכר)</div>
-                <span class="item-english-caption">Male Hen Harrier</span>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        ALL RIGHTS RESERVED © 2026 SHLOMI TOVA
-    </footer>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox">&times;</span>
-        <img id="lightbox-img" src="" alt="">
-    </div>
-
-    <script>
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            document.getElementById('lightbox-img').src = imgSrc;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        document.addEventListener('keydown', function(event) { if (event.key === "Escape") closeLightbox(); });
-    </script>
-
 </body>
 </html>
