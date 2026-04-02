@@ -60,7 +60,9 @@
         }
     </style>
 </head>
-<body onload="window.focus()"> <nav>
+<body>
+
+    <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
             <a href="about.html" class="nav-link active"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
@@ -73,7 +75,7 @@
     <a href="index.html" class="close-page">&times;</a>
 
     <section class="about-page">
-        <div class="about-container">
+        <div class="about-container" id="main-content" tabindex="0">
             <h1>אודות<span>ABOUT ME</span></h1>
             <div class="gold-line"></div>
             
@@ -96,8 +98,14 @@
     </section>
 
     <script>
-        // האזנה למקש ESC
-        document.addEventListener('keydown', function(event) {
+        // ברגע שהדף נטען, אנחנו נותנים פוקוס לתיבה המרכזית
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const content = document.getElementById('main-content');
+            content.focus();
+        });
+
+        // האזנה ללחיצה על המקלדת בכל מקום בדף
+        window.addEventListener('keyup', function(event) {
             if (event.key === "Escape") {
                 window.location.href = "index.html";
             }
