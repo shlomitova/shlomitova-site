@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mammals | Shlomi Tova</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
@@ -12,70 +13,50 @@
         .he-nav { display: block; font-size: 0.8rem; color: #aaa; }
         .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
         .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
-        
         .gallery-section { padding: 120px 10% 60px; }
         .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
-        .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; font-weight: 400; }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+        .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         .gallery-item { cursor: pointer; transition: 0.3s; }
-        .image-container { position: relative; width: 100%; padding-top: 66.66%; overflow: hidden; border-radius: 2px; background: #111; }
-        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
-        .gallery-item:hover img { transform: scale(1.05); }
-        
+        .image-container { position: relative; width: 100%; padding-top: 66.6%; overflow: hidden; background: #111; }
+        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .gallery-item:hover img { transform: scale(1.03); }
         .item-caption { margin-top: 15px; text-align: right; }
-        .cap-he { display: block; font-size: 1.15rem; font-weight: 300; margin-bottom: 4px; }
-        .cap-en { display: block; font-size: 0.85rem; color: #c5a059; font-weight: 300; letter-spacing: 1px; }
-
-        /* Lightbox Style */
-        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; cursor: zoom-out; }
+        .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
+        .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
+        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90%; box-shadow: 0 0 30px rgba(0,0,0,0.5); cursor: default; }
-        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; font-weight: 100; cursor: pointer; z-index: 2001; transition: 0.3s; }
-        .close-lightbox:hover { color: #c5a059; transform: scale(1.1); }
-
-        @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-section { padding: 100px 6%; } }
+        .lightbox img { max-width: 90%; max-height: 90%; }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
     </style>
 </head>
 <body>
     <nav>
-    <div class="nav-container">
-        <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
-        <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
-        <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
-        <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-        <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
-    </div>
-</nav>
-
+        <div class="nav-container">
+            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
+            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
+            <a href="mammals.html" class="nav-link active"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
+        </div>
+    </nav>
     <section class="gallery-section">
         <h1 class="section-title">יונקים<span>MAMMALS</span></h1>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="fox cub twins.jpg"></div><div class="item-caption"><span class="cap-he">גורי שועל מצוי</span><span class="cap-en">Red Fox Cubs</span></div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="a female ibex with her kid.jpg"></div><div class="item-caption"><span class="cap-he">נקבת יעל נובי וגדי</span><span class="cap-en">Nubian Ibex Female & Kid</span></div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="jungle cat.jpg"></div><div class="item-caption"><span class="cap-he">חתול ביצות</span><span class="cap-en">Jungle Cat</span></div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="onagers in the desert.jpg"></div><div class="item-caption"><span class="cap-he">פראים במדבר</span><span class="cap-en">Onagers in the Desert</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="fox_cub_twins.jpg"></div><div class="item-caption"><span class="cap-he">גורי שועל מצוי</span><span class="cap-en">Red Fox Cubs</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="female_ibex_kid.jpg"></div><div class="item-caption"><span class="cap-he">נקבת יעל נובי וגדי</span><span class="cap-en">Nubian Ibex</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="jungle_cat.jpg"></div><div class="item-caption"><span class="cap-he">חתול ביצות</span><span class="cap-en">Jungle Cat</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="onagers_desert.jpg"></div><div class="item-caption"><span class="cap-he">פראים במדבר</span><span class="cap-en">Onagers</span></div></div>
         </div>
     </section>
-
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" onclick="event.stopPropagation()">
     </div>
-
     <script>
-        function openLightbox(el) {
-            document.getElementById('lightbox-img').src = el.querySelector('img').src;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") closeLightbox();
-        });
+        function openLightbox(el) { document.getElementById('lightbox-img').src = el.querySelector('img').src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLightbox(); });
     </script>
 </body>
 </html>
