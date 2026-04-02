@@ -8,7 +8,7 @@
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
         
-        /* כפתור ה-X הקבוע - מופיע רק בנייח */
+        /* כפתור ה-X הקבוע - נייח בלבד */
         @media (min-width: 769px) {
             .close-page { 
                 position: fixed; top: 25px; left: 40px; 
@@ -61,7 +61,7 @@
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
 
         @media (max-width: 768px) {
-            .close-page { display: none; } /* ביטול ה-X בנייד אם לא ביקשת אותו שם */
+            .close-page { display: none; }
         }
     </style>
 </head>
@@ -92,17 +92,8 @@
                 <div class="image-container"><img src="male_montagus_harrier.jpg"></div>
                 <div class="item-caption"><span class="cap-he">זרוע שדות</span><span class="cap-en">Montagu's Harrier</span></div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="white_fronted_goose.jpg"></div>
-                <div class="item-caption"><span class="cap-he">אווז לבן-מצח</span><span class="cap-en">White-fronted Goose</span></div>
+            
             </div>
-
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="male_hen_harrier.jpg"></div>
-                <div class="item-caption"><span class="cap-he">זרוע תכול</span><span class="cap-en">Hen Harrier</span></div>
-            </div>
-        </div>
     </section>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
@@ -117,5 +108,27 @@
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+
         function closeLightbox() {
-            document.getElementById('lightbox').classList.
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ניהול מקש ESC - הפרדה מוחלטת
+        window.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const lightbox = document.getElementById('lightbox');
+                
+                // תמיד נסה לסגור את הלייטבוקס קודם (עובד גם בנייד וגם בנייח)
+                if (lightbox.classList.contains('active')) {
+                    closeLightbox();
+                } 
+                // רק אם אנחנו בנייח (מעל 768px) והלייטבוקס סגור - צא לדף הבית
+                else if (window.innerWidth > 768) {
+                    window.location.href = "index.html";
+                }
+            }
+        }, true); // ה-true מבטיח שהאירוע ייתפס בעדיפות עליונה
+    </script>
+</body>
+</html>
