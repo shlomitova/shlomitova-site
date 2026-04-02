@@ -7,35 +7,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; height: 100%; overflow: hidden; }
-        .close-page { position: fixed; top: 30px; right: 40px; color: #fff; font-size: 45px; text-decoration: none; z-index: 1100; transition: 0.3s; }
-        .close-page:hover { color: #c5a059; }
-        .contact-page { height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('white_fronted_goose.jpg') no-repeat center center; background-size: cover; }
-        .contact-container { background: rgba(10, 10, 10, 0.8); padding: 40px; width: 90%; max-width: 500px; text-align: center; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); outline: none; }
-        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 10px; }
+        
+        /* כפתור סגירה (X) */
+        .close-page { 
+            position: fixed; top: 30px; right: 40px; color: #fff; font-size: 45px; 
+            text-decoration: none; z-index: 1100; transition: 0.3s; 
+        }
+        .close-page:hover { color: #c5a059; transform: scale(1.1); }
+
+        /* רקע הדף - מעודכן לשם החדש ibex.jpg */
+        .contact-page { 
+            height: 100vh; display: flex; align-items: center; justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('ibex.jpg') no-repeat center center; 
+            background-size: cover; 
+        }
+
+        .contact-container { 
+            background: rgba(10, 10, 10, 0.8); padding: 40px; width: 95%; max-width: 500px; 
+            text-align: center; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(15px); 
+            outline: none;
+        }
+
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; }
         h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
+        
         form { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
-        input, textarea { background: transparent; border: none; border-bottom: 1px solid #444; padding: 10px; color: #fff; outline: none; font-family: inherit; }
+        input, textarea { 
+            background: transparent; border: none; border-bottom: 1px solid #444; 
+            padding: 12px; color: #fff; outline: none; font-family: inherit; transition: 0.3s; 
+        }
         input:focus, textarea:focus { border-bottom-color: #c5a059; }
-        button { background: #c5a059; color: #000; border: none; padding: 15px; cursor: pointer; font-weight: bold; margin-top: 20px; transition: 0.3s; letter-spacing: 2px; }
+        
+        button { 
+            background: #c5a059; color: #000; border: none; padding: 15px; 
+            cursor: pointer; font-weight: bold; margin-top: 20px; transition: 0.3s; 
+            letter-spacing: 2px; 
+        }
         button:hover { background: #fff; }
+
+        @media (max-width: 768px) {
+            .contact-container { padding: 30px; width: 90%; }
+            .close-page { top: 20px; right: 20px; font-size: 35px; }
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" class="close-page">&times;</a>
+
+    <a href="index.html" class="close-page" title="חזרה לדף הבית">&times;</a>
+
     <section class="contact-page">
         <div class="contact-container" id="contact-box" tabindex="0">
             <h2>צור קשר<span>CONTACT</span></h2>
+            
             <form action="https://formspree.io/f/xzdkaeqp" method="POST">
-                <input type="text" name="name" placeholder="Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Message" rows="4" required></textarea>
-                <button type="submit">SEND MESSAGE</button>
+                <input type="text" name="name" placeholder="שם מלא / Full Name" required>
+                <input type="email" name="email" placeholder="אימייל / Email" required>
+                <textarea name="message" placeholder="הודעה / Message" rows="4" required></textarea>
+                <button type="submit">שלח הודעה / SEND</button>
             </form>
         </div>
     </section>
+
     <script>
-        window.addEventListener('DOMContentLoaded', () => document.getElementById('contact-box').focus());
-        window.addEventListener('keyup', (e) => { if (e.key === "Escape") window.location.href = "index.html"; });
+        // פוקוס אוטומטי כדי ש-Esc יעבוד מיד
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('contact-box').focus();
+        });
+
+        // יציאה עם Esc לדף הבית
+        window.addEventListener('keyup', (e) => {
+            if (e.key === "Escape") {
+                window.location.href = "index.html";
+            }
+        });
     </script>
+
 </body>
 </html>
