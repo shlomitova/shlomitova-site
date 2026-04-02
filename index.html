@@ -29,25 +29,21 @@
                 left: 18%; 
                 transform: translateY(-50%);
                 text-align: center; 
-                max-width: 600px; /* הגדלתי מעט את הרוחב המקסימלי לטקסט הגדול */
+                max-width: 500px;
                 display: flex;
                 flex-direction: column;
                 align-items: center; 
             }
-            /* הגדלת השם */
-            .hero-content h1 { 
-                font-size: 4.8rem; 
-                font-weight: 200; 
-                letter-spacing: 15px; 
-                margin-bottom: 10px; 
-                text-transform: uppercase; 
-                white-space: nowrap; 
-            }
+            /* השם חוזר לגודל המקורי */
+            .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
             
+            /* תפריט הניווט - הגדלת הפונט */
             nav { 
                 position: absolute; top: 40px; right: 18%; 
-                display: flex; gap: 40px; 
+                display: flex; gap: 50px; /* הגדלתי מעט גם את הרווח ביניהם */
             }
+            .he-nav { display: block; font-size: 1.3rem; letter-spacing: 1px; } /* הגדלה */
+            .en-nav { display: block; font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; } /* הגדלה */
         }
 
         /* --- הגדרות לנייד (Mobile) - ללא שינוי --- */
@@ -61,22 +57,17 @@
             .hero-content p.sub-title { font-size: 0.8rem; letter-spacing: 3px; }
             .hero-content p.description { font-size: 0.9rem; padding: 0 20px; }
             nav { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+            .he-nav { display: block; font-size: 1rem; }
+            .en-nav { display: block; font-size: 0.6rem; }
         }
 
-        /* עיצוב כללי ושינוי גודל תיאור לנייח */
+        /* עיצוב כללי */
         .sub-title { font-size: 1.1rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
-        
-        @media (min-width: 769px) {
-            .description { font-size: 1.2rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; max-width: 500px; }
-        }
-        @media (max-width: 768px) {
-            .description { font-size: 0.9rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; max-width: 400px; }
-        }
+        .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; max-width: 400px; }
 
         .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
-        .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
-        .en-nav { display: block; font-size: 0.6rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
         .nav-link:hover { color: #c5a059; transform: translateY(-3px); }
+        .nav-link:hover .en-nav { color: #fff; }
     </style>
 </head>
 <body>
