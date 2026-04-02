@@ -19,6 +19,7 @@
             box-sizing: border-box;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('common_kestrel.jpg') no-repeat center center; 
             background-size: cover;
+            position: relative;
         }
 
         /* --- הגדרות למחשב נייח (Desktop) - ללא שינוי --- */
@@ -44,62 +45,43 @@
             .gold-line { margin: 25px auto; }
         }
 
-        /* --- הגדרות לנייד (Mobile) - התיקון כאן --- */
+        /* --- הגדרות לנייד (Mobile) - תיקון הצמדה לתחתית --- */
         @media (max-width: 768px) {
-            .about-page { 
-                justify-content: center; /* ממרכז אופקית */
-                align-items: center; /* ממרכז אנכית את גוש flex-end */
-                flex-direction: column;
-                padding-bottom: 20px; /* רווח קטן מהתחתית */
-                background-position: center center;
-            }
-            
             .about-container { 
+                position: absolute;
+                bottom: 40px; /* מצמיד חזק לתחתית הרחק מהראש של הבז */
+                left: 50%;
+                transform: translateX(-50%);
                 background: none; 
                 backdrop-filter: none;
                 border: none;
                 box-shadow: none;
-                width: 90%; 
-                padding: 0 15px; 
+                width: 80%; /* כיווץ הטקסט */
                 text-align: center;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                
-                /* התיקון: מוסיף רווח גדול מלמעלה כדי לדחוף את הטקסט למטה, רחוק מהפנים */
-                margin-top: 100px; /* מרווח מלמעלה */
-                /* מגביל את הגובה המקסימלי כדי שלא יטפס למעלה על הפנים */
-                max-height: 45%; 
-                overflow-y: visible; /* מאפשר לו להישפך אם הוא ארוך */
-                justify-content: flex-end; /* שומר על התוכן למטה בתוך התיבה */
             }
 
             h2 { 
-                font-size: 2.1rem; 
+                font-size: 1.8rem; 
                 text-shadow: 2px 2px 10px rgba(0,0,0,1); 
                 margin-bottom: 0px; 
-                line-height: 1.2;
-            }
-            h2 span {
-                text-shadow: 1px 1px 5px rgba(0,0,0,1);
-                margin-top: 8px;
-                font-size: 0.85rem;
             }
             
             .about-text { 
-                font-size: 1.05rem; 
+                font-size: 0.95rem; 
                 font-weight: 400; 
                 text-shadow: 1px 1px 8px rgba(0,0,0,1);
-                padding: 0 5px; /* כיווץ הטקסט מהשוליים */
             }
 
-            .gold-line { margin: 15px auto; box-shadow: 0 0 5px rgba(0,0,0,0.5); }
-            .close-page { top: 15px; left: 15px; font-size: 30px; text-shadow: 2px 2px 5px #000; }
+            .gold-line { margin: 15px auto; }
+            .close-page { top: 15px; left: 15px; font-size: 30px; }
         }
 
         /* עיצוב כללי */
         h2 { font-weight: 200; letter-spacing: 5px; color: #fff; text-transform: uppercase; }
-        h2 span { display: block; color: #c5a059; letter-spacing: 3px; }
+        h2 span { display: block; font-size: 0.9rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
         .gold-line { width: 50px; height: 1px; background: #c5a059; }
         .about-text { line-height: 1.7; color: #eee; }
         .about-text p { margin-bottom: 12px; }
