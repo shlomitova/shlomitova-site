@@ -40,22 +40,47 @@
             <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
         </div>
     </nav>
+
     <section class="gallery-section">
         <h1 class="section-title">יונקים<span>MAMMALS</span></h1>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="fox_cub_twins.jpg"></div><div class="item-caption"><span class="cap-he">גורי שועל מצוי</span><span class="cap-en">Red Fox Cubs</span></div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="female_ibex_kid.jpg"></div><div class="item-caption"><span class="cap-he">נקבת יעל נובי וגדי</span><span class="cap-en">Nubian Ibex</span></div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="jungle_cat.jpg"></div><div class="item-caption"><span class="cap-he">חתול ביצות</span><span class="cap-en">Jungle Cat</span></div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="onagers_desert.jpg"></div><div class="item-caption"><span class="cap-he">פראים במדבר</span><span class="cap-en">Onagers</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="fox cub twins.JPG"></div>
+                <div class="item-caption"><span class="cap-he">גורי שועל מצוי</span><span class="cap-en">Red Fox Cubs</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="a female ibex with her kid.JPG"></div>
+                <div class="item-caption"><span class="cap-he">נקבת יעל נובי וגדי</span><span class="cap-en">Nubian Ibex</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="jungle cat.JPG"></div>
+                <div class="item-caption"><span class="cap-he">חתול ביצות</span><span class="cap-en">Jungle Cat</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="onagers in the desert.JPG"></div>
+                <div class="item-caption"><span class="cap-he">פראים במדבר</span><span class="cap-en">Onagers</span></div>
+            </div>
         </div>
     </section>
+
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" onclick="event.stopPropagation()">
     </div>
+
     <script>
-        function openLightbox(el) { document.getElementById('lightbox-img').src = el.querySelector('img').src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        function openLightbox(el) { 
+            document.getElementById('lightbox-img').src = el.querySelector('img').src; 
+            document.getElementById('lightbox').classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeLightbox() { 
+            document.getElementById('lightbox').classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+        }
         document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLightbox(); });
     </script>
 </body>
