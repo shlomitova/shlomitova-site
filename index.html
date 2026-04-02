@@ -49,8 +49,8 @@
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
                 align-items: center; 
-                justify-content: flex-end; /* דוחף את התוכן לתחתית המסך */
-                padding-bottom: 50px; /* מרווח מהקצה התחתון */
+                justify-content: flex-end; 
+                padding-bottom: 40px;
             }
             
             nav { 
@@ -69,27 +69,45 @@
                 display: flex; 
                 flex-direction: column; 
                 align-items: center; 
-                width: 100%; 
+                width: 100%;
+                /* רקע שחור שקוף מאוד מאחורי הטקסט לשיפור הקריאות */
+                background: linear-gradient(transparent, rgba(0,0,0,0.7));
+                padding: 30px 10px;
             }
 
-            .hero-content h1 { font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 8px; text-transform: uppercase; }
+            /* הצללה לשם בנייד */
+            .hero-content h1 { 
+                font-size: 2.2rem; 
+                letter-spacing: 5px; 
+                margin-bottom: 8px; 
+                text-transform: uppercase;
+                text-shadow: 2px 2px 10px rgba(0,0,0,1);
+            }
             
-            /* תיקון צבע כותרת משנה בנייד - זהב בולט יותר */
+            /* הצהוב בנייד */
             .hero-content p.sub-title { 
                 font-size: 1rem; 
                 letter-spacing: 3px; 
-                color: #ffcc00; /* צהוב חזק יותר לקריאות מקסימלית */
+                color: #ffcc00; 
                 font-weight: 500;
-                text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* צל קל מאחורי הטקסט שיבלוט */
+                text-shadow: 1px 1px 5px rgba(0,0,0,1);
             }
 
-            .hero-content p.description { font-size: 1.05rem; padding: 0 25px; }
+            /* שיפור הטקסט הלבן הקטן בנייד */
+            .hero-content p.description { 
+                font-size: 1.05rem; 
+                padding: 0 25px; 
+                color: #ffffff; /* לבן מלא */
+                font-weight: 400; /* עיבוי קל */
+                text-shadow: 1px 1px 8px rgba(0,0,0,1); /* הצללה חזקה יותר */
+                line-height: 1.6;
+            }
 
-            .he-nav { display: block; font-size: 1.1rem; }
-            .en-nav { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; }
+            .he-nav { display: block; font-size: 1.1rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+            .en-nav { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.9); }
         }
 
-        /* עיצוב כללי */
+        /* עיצוב כללי - יתר הדברים ללא שינוי */
         .sub-title { font-size: 1.2rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
         .description { font-size: 1.1rem; line-height: 1.8; color: #eee; font-weight: 300; margin-bottom: 30px; max-width: 450px; }
 
