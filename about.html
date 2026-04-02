@@ -16,35 +16,39 @@
 
         .about-page { 
             height: 100vh; display: flex; align-items: center; 
-            justify-content: flex-end; /* דוחף את המלבן לשמאל הפיזי */
-            padding: 0 10%; 
-            /* שימוש בתמונת הבז (common_kestrel.jpg) עם מיסוך כמעט שקוף */
-            background: linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%), url('common_kestrel.jpg') no-repeat right center; 
+            justify-content: flex-end; 
+            padding: 5% 10%; 
+            box-sizing: border-box;
+            /* הכהות הופחתה בחצי (0.35) כדי שהתמונה תהיה חיה יותר */
+            background: linear-gradient(to right, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 100%), url('common_kestrel.jpg') no-repeat right center; 
             background-size: cover; 
+            border: 15px solid #000; /* מסגרת מעט דקה יותר */
         }
 
         .about-container { 
-            background: rgba(10, 10, 10, 0.65); 
-            padding: 50px; width: 100%; max-width: 450px; 
-            text-align: center; border: 1px solid rgba(255,255,255,0.2); 
-            backdrop-filter: blur(15px); 
+            background: rgba(10, 10, 10, 0.6); 
+            padding: 45px; width: 100%; max-width: 420px; 
+            text-align: center; border: 1px solid rgba(255,255,255,0.15); 
+            backdrop-filter: blur(12px); 
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             outline: none;
         }
 
-        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.2rem; }
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.1rem; }
         h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
         
         .gold-line { width: 40px; height: 1px; background: #c5a059; margin: 25px auto; }
 
         .about-text { 
-            font-size: 1.1rem; line-height: 1.8; color: #fff; 
+            font-size: 1.05rem; line-height: 1.8; color: #fff; 
             font-weight: 300; text-align: right; margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* הוספתי צל לטקסט כדי שיבלוט על הרקע הבהיר יותר */
         }
 
         @media (max-width: 768px) {
-            .about-page { justify-content: center; padding: 0 5%; background-position: center; }
-            .about-container { max-width: 90%; }
+            .about-page { justify-content: center; padding: 0 5%; background-position: center; border: none; }
+            .about-container { max-width: 90%; padding: 30px; }
+            .close-page { top: 20px; left: 20px; font-size: 35px; }
         }
     </style>
 </head>
