@@ -6,10 +6,9 @@
     <title>Shlomi Tova | Nature Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* איפוס כללי כדי למנוע גלילה מיותרת */
         body, html { 
             margin: 0; padding: 0; width: 100%; height: 100%; 
-            font-family: 'Segoe UI', sans-serif; background: #050505; 
+            font-family: 'Segoe UI', sans-serif; background: #000; 
             color: #fff; overflow: hidden; 
         }
         
@@ -24,28 +23,28 @@
         .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
         .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
 
-        /* שער - הגבלה של התמונה למסך בלבד */
         .hero { 
             height: 100vh; width: 100vw;
-            /* המיסוך הכהה בצד שמאל (מכיוון שהדף RTL, שמאל זה הסוף של ה-gradient) */
-            background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%), url('ibex.jpg') no-repeat center center; 
-            background-size: cover; 
-            display: flex; align-items: center; justify-content: flex-start; padding: 0 8%;
+            /* contain מבטיח שהתמונה לא תיחתך לעולם */
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0) 100%), url('ibex.jpg') no-repeat center center; 
+            background-size: contain; 
+            display: flex; align-items: center; 
+            justify-content: flex-end; /* בגלל ה-RTL, זה מצמיד לשמאל הפיזי */
+            padding: 0 8%;
             box-sizing: border-box;
         }
 
-        /* הבלוק בשמאל */
         .hero-content { 
             max-width: 400px; 
-            text-align: center; /* יישור טקסט למרכז בתוך הבלוק */
+            text-align: center; 
             z-index: 10;
             display: flex;
             flex-direction: column;
-            align-items: center; /* ממרכז את האלמנטים אחד מתחת לשני */
+            align-items: center;
         }
         
         .hero-content h1 { 
-            font-size: 3rem; font-weight: 200; letter-spacing: 6px; margin: 0; 
+            font-size: 2.8rem; font-weight: 200; letter-spacing: 6px; margin: 0; 
             text-transform: uppercase; line-height: 1.1; color: #fff;
         }
         .hero-content p.subtitle { 
@@ -67,10 +66,10 @@
         @media (max-width: 768px) {
             .hero { 
                 justify-content: center; padding: 0 5%; 
-                background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('ibex.jpg') no-repeat center center;
+                background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('ibex.jpg') no-repeat center center;
+                background-size: cover;
             }
             .hero-content { max-width: 90%; }
-            .hero-content h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
