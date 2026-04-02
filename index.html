@@ -51,7 +51,6 @@
         .lightbox img { max-width: 90%; max-height: 90%; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; cursor: pointer; }
 
-        /* פוטר פשוט לסיום הדף */
         footer { padding: 40px; text-align: center; color: #555; font-size: 0.8rem; letter-spacing: 1px; border-top: 1px solid #111; }
 
         @media (max-width: 768px) {
@@ -69,7 +68,8 @@
         <div class="nav-container">
             <a href="#mammals">יונקים</a>
             <a href="#birds">ציפורים</a>
-            <a href="contact.html">צור קשר</a> </div>
+            <a href="contact.html">צור קשר</a>
+        </div>
     </nav>
 
     <section class="hero">
@@ -92,6 +92,11 @@
                 <div class="image-container"><img src="a female ibex with her kid.jpg" alt="יעל וגדי"></div>
                 <div class="item-caption">נקבת יעל נובי וגדי</div>
                 <span class="item-english-caption">Nubian Ibex Female & Kid</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="jungle cat.jpg" alt="חתול ביצות"></div>
+                <div class="item-caption">חתול ביצות</div>
+                <span class="item-english-caption">Jungle Cat</span>
             </div>
             <div class="gallery-item" onclick="openLightbox(this)">
                 <div class="image-container"><img src="onagers in the desert.jpg" alt="פראים במדבר"></div>
@@ -118,6 +123,11 @@
                 <div class="image-container"><img src="White fronted Goose.jpg" alt="אווז לבן מצח"></div>
                 <div class="item-caption">אווז לבן-מצח</div>
                 <span class="item-english-caption">Greater White-fronted Goose</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="male Hen Harrier.jpg" alt="זרוע תכול זכר"></div>
+                <div class="item-caption">זרוע תכול (זכר)</div>
+                <span class="item-english-caption">Male Hen Harrier</span>
             </div>
         </div>
     </section>
