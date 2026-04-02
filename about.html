@@ -18,7 +18,6 @@
         .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
         .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
 
-        /* כפתור ה-X לסגירה וחזרה הביתה */
         .close-page {
             position: fixed; top: 85px; right: 40px; color: #fff; font-size: 45px; 
             font-weight: 100; cursor: pointer; z-index: 1100; transition: 0.3s; text-decoration: none; line-height: 1;
@@ -61,9 +60,7 @@
         }
     </style>
 </head>
-<body>
-
-    <nav>
+<body onload="window.focus()"> <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
             <a href="about.html" class="nav-link active"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
@@ -99,7 +96,7 @@
     </section>
 
     <script>
-        // האזנה למקש ESC במקלדת כדי לחזור לדף הבית
+        // האזנה למקש ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === "Escape") {
                 window.location.href = "index.html";
