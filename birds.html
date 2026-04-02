@@ -6,107 +6,80 @@
     <title>Birds | Shlomi Tova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
         
-        /* ניווט */
-        nav { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; 
-            background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); 
+        .close-page { 
+            position: fixed; top: 30px; left: 40px; 
+            color: #fff; font-size: 50px; text-decoration: none; z-index: 1100; transition: 0.3s; 
         }
-        .nav-container { display: flex; justify-content: center; gap: 35px; }
-        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
-        .he-nav { display: block; font-size: 0.8rem; color: #aaa; }
-        .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
+        .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
-        /* גלריה */
-        .gallery-section { padding: 120px 10% 60px; }
-        .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
-        .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .gallery-item { cursor: pointer; transition: 0.3s; }
-        
-        /* מיכל התמונה - וידאתי שיש לו גובה כדי שלא יהיה "שקוף" */
-        .image-container { 
-            position: relative; width: 100%; height: 250px; 
-            overflow: hidden; background: #111; border: 1px solid #222; 
+        .birds-page { 
+            height: 100vh; display: flex; align-items: center; 
+            justify-content: flex-end; 
+            padding: 5% 10%; 
+            box-sizing: border-box;
+            /* כאן שמתי תמונה ייחודית לדף ציפורים - golden_eagle.jpg */
+            background: linear-gradient(to right, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 100%), url('golden_eagle.jpg') no-repeat right center; 
+            background-size: cover; 
+            border: 15px solid #000;
         }
-        .image-container img { 
-            width: 100%; height: 100%; object-fit: cover; transition: 0.6s; 
-        }
-        .gallery-item:hover img { transform: scale(1.03); }
-        
-        .item-caption { margin-top: 15px; text-align: right; }
-        .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
-        .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
 
-        /* לייטבוקס (הגדלה) */
-        .lightbox { 
-            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
-            width: 100%; height: 100%; background: rgba(0,0,0,0.95); 
-            align-items: center; justify-content: center; 
+        .birds-container { 
+            background: rgba(10, 10, 10, 0.65); 
+            padding: 40px; width: 100%; max-width: 450px; 
+            text-align: center; border: 1px solid rgba(255,255,255,0.15); 
+            backdrop-filter: blur(12px); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            outline: none;
         }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #333; }
-        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
+
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.1rem; }
+        h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
+        
+        .gold-line { width: 40px; height: 1px; background: #c5a059; margin: 20px auto; }
+
+        /* הגדרות לטקסט ולתמונות הקטנות */
+        .birds-text { font-size: 1rem; line-height: 1.6; color: #fff; font-weight: 300; text-align: right; direction: rtl; }
+        .bird-small-gallery { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; text-align: left; direction: ltr; }
+        .bird-entry { font-size: 0.9rem; color: #ccc; }
+        .bird-entry b { color: #fff; }
+
+        @media (max-width: 768px) {
+            .birds-page { justify-content: center; padding: 0 5%; background-position: center; border: none; }
+            .birds-container { max-width: 90%; padding: 30px; }
+            .close-page { top: 20px; left: 20px; font-size: 35px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
-            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
-            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
-            <a href="birds.html" class="nav-link active"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
-        </div>
-    </nav>
+    <a href="index.html" class="close-page">&times;</a>
 
-    <section class="gallery-section">
-        <h1 class="section-title">ציפורים<span>BIRDS</span></h1>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="common_kestrel.jpg"></div>
-                <div class="item-caption"><span class="cap-he">בז מצוי</span><span class="cap-en">Common Kestrel</span></div>
+    <section class="birds-page">
+        <div class="birds-container" id="birds-box" tabindex="0">
+            <h2>ציפורים<span>BIRDS</span></h2>
+            <div class="gold-line"></div>
+            
+            <div class="birds-text">
+                <p>מבחר רגעים מהחיים הפראיים של ציפורי ישראל.</p>
+                <div class="gold-line" style="opacity: 0.2; width: 30px;"></div>
+                
+                <div class="bird-small-gallery">
+                    <p class="bird-entry"><b>Hen Harrier</b> | זרון תכול</p>
+                    <p class="bird-entry"><b>White-fronted Goose</b> | אווז לבן-מצח</p>
+                    <p class="bird-entry"><b>Montagu's Harrier</b> | זרון שדות</p>
+                    <p class="bird-entry"><b>Common Kestrel</b> | בז מצוי</p>
+                </div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="male_montagus_harrier.jpg"></div>
-                <div class="item-caption"><span class="cap-he">זרוע שדות</span><span class="cap-en">Montagu's Harrier</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="white_fronted_goose.jpg"></div>
-                <div class="item-caption"><span class="cap-he">אווז לבן-מצח</span><span class="cap-en">White-fronted Goose</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="image-container"><img src="male_hen_harrier.jpg"></div>
-                <div class="item-caption"><span class="cap-he">זרוע תכול</span><span class="cap-en">Hen Harrier</span></div>
-            </div>
+            
+            <div class="gold-line"></div>
         </div>
     </section>
 
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" onclick="event.stopPropagation()">
-    </div>
-
     <script>
-        function openLightbox(el) {
-            const img = el.querySelector('img');
-            document.getElementById('lightbox-img').src = img.src;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        document.addEventListener('keydown', (e) => { if(e.key === "Escape") closeLightbox(); });
+        window.addEventListener('DOMContentLoaded', () => document.getElementById('birds-box').focus());
+        window.addEventListener('keyup', (e) => { if (e.key === "Escape") window.location.href = "index.html"; });
     </script>
 </body>
 </html>
