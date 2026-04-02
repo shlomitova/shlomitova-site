@@ -8,52 +8,52 @@
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
         
+        /* כפתור סגירה */
         .close-page { 
             position: fixed; top: 30px; left: 40px; 
-            color: #fff; font-size: 50px; text-decoration: none; z-index: 1100; transition: 0.3s; 
+            color: #fff; font-size: 40px; text-decoration: none; z-index: 1000; transition: 0.3s; 
         }
         .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
         .about-page { 
             height: 100vh; display: flex; align-items: center; 
-            justify-content: flex-end; 
-            padding: 5% 10%; 
-            box-sizing: border-box;
-            background: linear-gradient(to right, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 100%), url('common_kestrel.jpg') no-repeat right center; 
-            background-size: cover; 
-            border: 15px solid #000;
+            justify-content: flex-start; /* בנייח הטקסט יהיה בצד ימין (RTL) */
+            padding: 0 10%; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('common_kestrel.jpg') no-repeat center center; 
+            background-size: cover;
         }
 
+        /* תיבת התוכן בסגנון דף הבית */
         .about-container { 
-            background: rgba(10, 10, 10, 0.65); 
-            padding: 40px; width: 100%; max-width: 480px; /* הגדלתי מעט בשביל האנגלית */
-            text-align: center; border: 1px solid rgba(255,255,255,0.15); 
-            backdrop-filter: blur(12px); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            outline: none;
+            background: rgba(0, 0, 0, 0.75); 
+            padding: 50px; 
+            width: 100%; 
+            max-width: 500px; 
+            border: 1px solid rgba(197, 160, 89, 0.3); /* מסגרת זהב עדינה */
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
 
-        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.1rem; }
-        h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.5rem; color: #fff; text-transform: uppercase; }
+        h2 span { display: block; font-size: 0.9rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
         
-        .gold-line { width: 40px; height: 1px; background: #c5a059; margin: 20px auto; }
+        .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 25px 0; }
 
-        .about-text { 
-            font-size: 1rem; line-height: 1.6; color: #fff; 
-            font-weight: 300; margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-        }
+        .about-text { font-size: 1.1rem; line-height: 1.8; color: #eee; font-weight: 300; }
+        .about-text p { margin-bottom: 20px; }
 
-        /* עיצוב ספציפי לעברית */
-        .text-he { text-align: right; direction: rtl; margin-bottom: 25px; }
-        
-        /* עיצוב ספציפי לאנגלית */
-        .text-en { text-align: left; direction: ltr; color: #ccc; font-size: 0.95rem; }
-
+        /* התאמה לנייד */
         @media (max-width: 768px) {
-            .about-page { justify-content: center; padding: 0 5%; background-position: center; border: none; }
-            .about-container { max-width: 90%; padding: 30px; }
-            .close-page { top: 20px; left: 20px; font-size: 35px; }
+            .about-page { justify-content: center; padding: 0 5%; background-position: center; }
+            .about-container { 
+                max-width: 90%; 
+                padding: 35px 25px; 
+                margin-top: 50px; /* מקום לתפריט הניווט אם קיים */
+                background: rgba(0, 0, 0, 0.85); 
+            }
+            h2 { font-size: 2rem; }
+            .about-text { font-size: 1rem; }
+            .close-page { top: 20px; left: 20px; font-size: 30px; }
         }
     </style>
 </head>
@@ -62,31 +62,18 @@
     <a href="index.html" class="close-page">&times;</a>
 
     <section class="about-page">
-        <div class="about-container" id="about-box" tabindex="0">
-            <h2>שלומי טובה<span>ABOUT ME</span></h2>
+        <div class="about-container">
+            <h2>אודות<span>ABOUT ME</span></h2>
             <div class="gold-line"></div>
             
             <div class="about-text">
-                <div class="text-he">
-                    <p> צלם טבע המתעד את המפגשים הפראיים והנסתרים של חיות הבר בישראל. הצילום עבורי הוא דרך חיים וחיבור עמוק לטבע הסובב אותנו.</p>
-                    <p>התשוקה שלי לצילום טבע נובעת מתוך כבוד עצום לעולם החי והרצון לשמר את הרגעים הייחודיים והמרגשים ביותר בטבע המקומי.</p>
-                </div>
-
-                <div class="gold-line" style="opacity: 0.3;"></div>
-
-                <div class="text-en">
-                    <p> a nature photographer dedicated to documenting the wild and hidden encounters of Israel's wildlife. Photography for me is a way of life and a deep connection to the nature that surrounds us.</p>
-                    <p>My passion for wildlife photography stems from immense respect for the animal kingdom and the desire to preserve the most unique and exciting moments in local nature.</p>
-                </div>
+                <p>שלומי טובה, צלם טבע וחיות בר, מתמחה בתיעוד רגעים נדירים מהסביבה הטבעית של ישראל.</p>
+                <p>הצילום עבורי הוא דרך חיים, המאפשרת לחשוף את היופי הפראי והשקט של הטבע דרך העדשה, תוך שמירה על כבוד לבעלי החיים וסביבתם.</p>
             </div>
             
             <div class="gold-line"></div>
         </div>
     </section>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', () => document.getElementById('about-box').focus());
-        window.addEventListener('keyup', (e) => { if (e.key === "Escape") window.location.href = "index.html"; });
-    </script>
 </body>
 </html>
