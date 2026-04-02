@@ -6,104 +6,54 @@
     <title>Shlomi Tova | Nature Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { 
-            margin: 0; padding: 0; width: 100%; height: 100%; 
-            font-family: 'Segoe UI', sans-serif; background: #000; 
-            color: #fff; overflow: hidden; 
-        }
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
         
-        nav { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; 
-            background: rgba(5, 5, 5, 0.7); padding: 20px 0; backdrop-filter: blur(8px); 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-        }
-        .nav-container { display: flex; justify-content: center; gap: 40px; }
-        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
-        .he-nav { display: block; font-size: 0.9rem; color: #ccc; }
-        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-        .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
-
+        /* מסך הבית - הבהרת הרקע */
         .hero { 
-            height: 100vh; width: 100vw;
-            /* שימוש ב-cover יחד עם התמקדמות בצד ימין */
-            background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%), url('ibex.jpg') no-repeat right center; 
+            height: 100vh; 
+            /* שיניתי את ה-0.6 ל-0.3 כדי שיהיה הרבה יותר בהיר */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ibex.jpg') no-repeat center center; 
             background-size: cover; 
-            display: flex; align-items: center; 
-            justify-content: flex-end; /* הצמדת הבלוק לשמאל הפיזי */
-            padding: 0 8%;
-            box-sizing: border-box;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
         }
 
-        .hero-content { 
-            max-width: 400px; 
-            text-align: center; /* יישור טקסט פנימי למרכז */
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* ממרכז את האלמנטים בתוך הבלוק */
-        }
-        
-        .hero-content h1 { 
-            font-size: 2.8rem; font-weight: 200; letter-spacing: 6px; margin: 0; 
-            text-transform: uppercase; line-height: 1.1; color: #fff;
-        }
-        .hero-content p.subtitle { 
-            font-size: 1rem; color: #c5a059; letter-spacing: 4px; 
-            font-weight: 300; text-transform: uppercase; margin: 15px 0 20px 0; 
-        }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 200; letter-spacing: 12px; margin-bottom: 10px; text-transform: uppercase; }
+        .hero-content p { font-size: 1.1rem; color: #c5a059; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; }
 
-        .gold-line { width: 40px; height: 1px; background: #c5a059; margin: 20px 0; }
+        nav { display: flex; gap: 40px; }
+        .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
+        .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
+        .en-nav { display: block; font-size: 0.6rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+        .nav-link:hover { color: #c5a059; transform: translateY(-3px); }
+        .nav-link:hover .en-nav { color: #fff; }
 
-        .about-text { 
-            font-size: 1.05rem; line-height: 1.7; color: #ddd; font-weight: 300; 
-            margin-bottom: 25px; text-shadow: 1px 1px 5px rgba(0,0,0,1);
-        }
-
-        .social-links { display: flex; gap: 20px; justify-content: center; }
-        .social-links a { color: #fff; font-size: 1.3rem; transition: 0.3s; }
-        .social-links a:hover { color: #c5a059; transform: translateY(-3px); }
-
+        /* תיקונים ספציפיים לנייד */
         @media (max-width: 768px) {
             .hero { 
-                justify-content: center; padding: 0 5%; 
-                /* במובייל ממקדים למרכז כי אין ברירה */
-                background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('ibex.jpg') no-repeat center center;
+                /* בנייד המיסוך אפילו יותר עדין כדי לראות את הגדי */
+                background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg') no-repeat center center;
                 background-size: cover;
             }
-            .hero-content { max-width: 90%; }
+            .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
+            .hero-content p { font-size: 0.8rem; letter-spacing: 3px; }
+            nav { gap: 20px; flex-wrap: wrap; justify-content: center; padding: 0 20px; }
+            .he-nav { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-link active"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
-            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
-            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
-            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
-        </div>
-    </nav>
-
     <section class="hero">
         <div class="hero-content">
             <h1>SHLOMI TOVA</h1>
-            <p class="subtitle">WILDLIFE PHOTOGRAPHY</p>
+            <p>Wildlife Photography</p>
             
-            <div class="gold-line"></div>
-            
-            <div class="about-text">
-                שמי שלומי טובה, צלם טבע המוקדש לתיעוד המפגשים הפראיים והנסתרים של חיות הבר בישראל. הצילום עבורי הוא דרך חיים וחיבור עמוק לטבע הסובב אותנו.
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.facebook.com/shlomi.tova" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/shlomitova" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/972549391375" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            
-            <div class="gold-line"></div>
+            <nav>
+                <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
+                <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+                <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+                <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
+            </nav>
         </div>
     </section>
 
