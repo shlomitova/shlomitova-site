@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Shlomi Tova</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; height: 100%; }
+        
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px);
+        }
+        .nav-container { display: flex; justify-content: center; gap: 35px; }
+        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
+        .he-nav { display: block; font-size: 0.8rem; color: #aaa; }
+        .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
+
+        .about-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('_DSC4996-Edit-2.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 120px 10% 60px;
+        }
+
+        .about-container {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(10, 10, 10, 0.6);
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 200; letter-spacing: 5px; margin-bottom: 30px; text-transform: uppercase; }
+        h1 span { display: block; font-size: 0.9rem; color: #c5a059; margin-top: 10px; letter-spacing: 3px; }
+
+        .about-content { line-height: 1.8; margin-bottom: 40px; }
+        .about-he { font-size: 1.2rem; font-weight: 300; color: #eee; margin-bottom: 30px; }
+        .about-en { font-size: 1rem; font-weight: 300; color: #aaa; direction: ltr; }
+
+        .gold-line { width: 60px; height: 1px; background: #c5a059; margin: 30px auto; }
+
+        @media (max-width: 768px) {
+            .about-container { padding: 30px; width: 90%; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
+            <a href="about.html" class="nav-link active"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
+            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
+        </div>
+    </nav>
+
+    <section class="about-page">
+        <div class="about-container">
+            <h1>אודות<span>ABOUT ME</span></h1>
+            <div class="gold-line"></div>
+            
+            <div class="about-content">
+                <div class="about-he">
+                    נעים מאוד, אני שלומי. צלם טבע וחיות בר, מתמחה בתיעוד הרגעים החבויים והפראיים של הטבע הישראלי. 
+                    מזה שנים אני משוטט עם המצלמה בשטחים הפתוחים, מהחרמון ועד הערבה, במטרה להנציח את המפגשים הנדירים עם בעלי החיים בסביבתם הטבעית. 
+                    הצילום עבורי הוא דרך חיים, כלי לחיבור הציבור ליופי המרהיב ולחשיבות השימור של חיות הבר בישראל.
+                </div>
+                
+                <div class="about-en">
+                    I am Shlomi, a wildlife and nature photographer dedicated to capturing the hidden and raw moments of Israel's natural world. 
+                    From the snowy peaks of Mount Hermon to the vast deserts of the Arava, I spend my time documenting rare encounters with animals in their natural habitats. 
+                    For me, photography is more than a profession—it's a way of life and a tool to inspire others to appreciate and protect the magnificent wildlife of our region.
+                </div>
+            </div>
+
+            <div class="gold-line"></div>
+        </div>
+    </section>
+
+</body>
+</html>
