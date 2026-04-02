@@ -22,15 +22,18 @@
         @media (min-width: 769px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
-                /* flex-end בתוך RTL ידחוף את התוכן לשמאל הפיזי */
-                align-items: flex-end; 
+                align-items: flex-start; 
                 justify-content: center;
-                padding-right: 10%; /* רווח מהצד השמאלי של המסך (בגלל ה-RTL) */
+                /* הגדלתי את המרווח משמאל כדי להזיז את הטקסט ימינה לכיוון המרכז */
+                padding-left: 15%; 
             }
-            .hero-content { text-align: left; max-width: 500px; direction: ltr; } /* מעביר את הטקסט לאנגלית/שמאל */
+            .hero-content { 
+                text-align: center; /* ממרכז את הטקסט בתוך התיבה של עצמו */
+                max-width: 450px; 
+            }
             nav { 
-                position: absolute; top: 40px; right: 10%; 
-                display: flex; gap: 40px; direction: ltr;
+                position: absolute; top: 40px; left: 15%; /* גם התפריט זז ימינה בהתאמה */
+                display: flex; gap: 40px; 
             }
         }
 
@@ -49,7 +52,7 @@
         /* עיצוב הטקסט */
         .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; }
         .sub-title { font-size: 1.1rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
-        .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; direction: rtl; text-align: left; }
+        .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; }
 
         .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
         .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
