@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mammals | Shlomi Tova</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; }
+        .nav-container { display: flex; justify-content: center; gap: 30px; }
+        .nav-container a { color: #aaa; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; }
+        .nav-container a.active { color: #c5a059; }
+        .gallery-section { padding: 100px 10%; }
+        .section-title { text-align: center; font-size: 2rem; letter-spacing: 5px; margin-bottom: 50px; font-weight: 200; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .gallery-item { cursor: pointer; }
+        .image-container { position: relative; width: 100%; padding-top: 66.66%; overflow: hidden; }
+        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .item-caption { margin-top: 15px; text-align: right; font-size: 1.1rem; }
+        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 90%; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html">בית</a>
+            <a href="mammals.html" class="active">יונקים</a>
+            <a href="birds.html">ציפורים</a>
+            <a href="contact.html">צור קשר</a>
+        </div>
+    </nav>
+    <section class="gallery-section">
+        <h1 class="section-title">יונקים | MAMMALS</h1>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="fox cub twins.jpg"></div><div class="item-caption">גורי שועל מצוי</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="a female ibex with her kid.jpg"></div><div class="item-caption">נקבת יעל נובי וגדי</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="jungle cat.jpg"></div><div class="item-caption">חתול ביצות</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="onagers in the desert.jpg"></div><div class="item-caption">פראים במדבר</div></div>
+        </div>
+    </section>
+    <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')"><img id="lightbox-img"></div>
+    <script>
+        function openLightbox(el) { document.getElementById('lightbox-img').src = el.querySelector('img').src; document.getElementById('lightbox').classList.add('active'); }
+    </script>
+</body>
+</html>
