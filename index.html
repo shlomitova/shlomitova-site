@@ -11,29 +11,35 @@
         .hero { 
             height: 100vh; 
             display: flex; 
-            flex-direction: column; 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             position: relative;
         }
 
-        /* --- הגדרות למחשב נייח (Desktop) --- */
+        /* --- הגדרות למחשב נייח בלבד (Desktop) --- */
         @media (min-width: 769px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
-                align-items: flex-start; 
-                justify-content: center;
-                /* הגדלתי את המרווח משמאל כדי להזיז את הטקסט ימינה לכיוון המרכז */
-                padding-left: 15%; 
             }
+            /* מיקום אבסולוטי מהשמאל - כדי שלא יזוז לצד השני */
             .hero-content { 
-                text-align: center; /* ממרכז את הטקסט בתוך התיבה של עצמו */
-                max-width: 450px; 
+                position: absolute;
+                top: 50%;
+                left: 15%; /* זה דוחף אותו מהשוליים השמאליים פנימה */
+                transform: translateY(-50%);
+                text-align: center; /* ממרכז את השורות אחת לשנייה */
+                max-width: 450px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
             nav { 
-                position: absolute; top: 40px; left: 15%; /* גם התפריט זז ימינה בהתאמה */
-                display: flex; gap: 40px; 
+                position: absolute; 
+                top: 40px; 
+                left: 15%; 
+                display: flex; 
+                gap: 40px; 
             }
         }
 
@@ -41,18 +47,19 @@
         @media (max-width: 768px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
+                flex-direction: column;
                 align-items: center; justify-content: center;
-                text-align: center;
             }
+            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
             nav { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
             .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
             .hero-content p.sub-title { font-size: 0.8rem; letter-spacing: 3px; }
         }
 
         /* עיצוב הטקסט */
-        .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; }
+        .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
         .sub-title { font-size: 1.1rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
-        .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; }
+        .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; max-width: 400px; }
 
         .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
         .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
