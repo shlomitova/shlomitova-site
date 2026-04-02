@@ -7,21 +7,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; overflow-x: hidden; }
-        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.8); padding: 20px 0; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* ניווט */
+        nav { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            background: rgba(5, 5, 5, 0.7); padding: 20px 0; backdrop-filter: blur(8px); 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
         .nav-container { display: flex; justify-content: center; gap: 40px; }
         .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
         .he-nav { display: block; font-size: 0.9rem; color: #ccc; }
         .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
         .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('ibex.jpg') no-repeat center center; background-size: cover; }
-        .hero-content h1 { font-size: 3.5rem; font-weight: 200; letter-spacing: 10px; margin-bottom: 10px; text-transform: uppercase; }
-        .hero-content p { font-size: 1.1rem; color: #c5a059; letter-spacing: 4px; font-weight: 300; }
-        .intro-section { padding: 100px 10%; text-align: center; background: #050505; }
-        .intro-text { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; font-weight: 300; color: #aaa; }
-        .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 30px auto; }
+
+        /* שער - תמונה מוארת */
+        .hero { 
+            height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; 
+            background: url('ibex.jpg') no-repeat center center; 
+            background-size: cover; 
+        }
+        .hero-content { text-shadow: 0 4px 20px rgba(0,0,0,0.9); }
+        .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 12px; margin: 0; text-transform: uppercase; }
+        .hero-content p { font-size: 1.2rem; color: #c5a059; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; margin-top: 10px; }
+
+        /* פסקה עליך */
+        .intro-section { padding: 120px 10%; text-align: center; background: #050505; }
+        .intro-text { max-width: 850px; margin: 0 auto; line-height: 2; font-size: 1.2rem; font-weight: 300; color: #bbb; }
+        .gold-line { width: 60px; height: 1px; background: #c5a059; margin: 40px auto; }
+        
+        /* לינקים חברתיים */
+        .social-links { margin-top: 40px; display: flex; justify-content: center; gap: 30px; }
+        .social-links a { color: #fff; font-size: 1.5rem; transition: 0.3s; text-decoration: none; }
+        .social-links a:hover { color: #c5a059; transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; letter-spacing: 6px; }
+            .intro-text { font-size: 1.1rem; padding: 0 5%; }
+            .nav-container { gap: 15px; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-link active"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
@@ -31,18 +58,31 @@
             <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
         </div>
     </nav>
+
     <section class="hero">
         <div class="hero-content">
             <h1>SHLOMI TOVA</h1>
             <p>WILDLIFE PHOTOGRAPHY</p>
         </div>
     </section>
+
     <section class="intro-section">
         <div class="intro-text">
             <div class="gold-line"></div>
-            תיעוד רגעים נדירים מהטבע הפראי, מתוך אהבה עמוקה לחיות הבר ולנופים המרהיבים של ישראל.
+            שמי שלומי טובה, צלם טבע המוקדש לתיעוד המפגשים הפראיים והנסתרים של חיות הבר בישראל. הצילום עבורי הוא דרך חיים וחיבור עמוק לטבע הסובב אותנו. אני מזמין אתכם להצטרף אלי למסע דרך העדשה ולגלות את היופי המרהיב של עולם החי.
+            <br>
+            <small style="color: #666; display: block; margin-top: 15px; letter-spacing: 1px;">
+                I am Shlomi Tova, a wildlife photographer dedicated to documenting the hidden and raw moments of Israel's natural world.
+            </small>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/shlomi.tova" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/shlomitova" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/972549391375" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
             <div class="gold-line"></div>
         </div>
     </section>
+
 </body>
 </html>
