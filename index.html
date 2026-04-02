@@ -12,42 +12,42 @@
             height: 100vh; 
             display: flex; 
             flex-direction: column; 
-            justify-content: center; 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+            position: relative;
         }
 
-        /* הגדרות למחשב נייח בלבד (Desktop) */
+        /* --- הגדרות למחשב (Desktop) --- */
         @media (min-width: 769px) {
             .hero { 
-                /* כהות 0.6 ויישור לשמאל */
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
                 align-items: flex-start; 
-                padding-left: 10%; 
+                justify-content: center;
+                padding-left: 10%; /* דוחף את כל הגוש לשמאל של הגדי */
             }
-            .hero-content { text-align: left; } /* יישור שורות הטקסט לשמאל */
-            nav { justify-content: flex-start; }
+            .hero-content { text-align: left; max-width: 500px; }
+            nav { position: absolute; top: 40px; left: 10%; display: flex; gap: 40px; }
         }
 
-        /* הגדרות לנייד בלבד (Mobile) */
+        /* --- הגדרות לנייד (Mobile) --- */
         @media (max-width: 768px) {
             .hero { 
-                /* כהות 0.2 ויישור למרכז */
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
-                align-items: center; 
+                align-items: center; justify-content: center;
                 text-align: center;
             }
+            nav { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
             .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
-            .hero-content p { font-size: 0.8rem; letter-spacing: 3px; }
-            nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero-content p.sub-title { font-size: 0.8rem; letter-spacing: 3px; }
+            .hero-content p.description { font-size: 0.9rem; padding: 0 20px; }
         }
 
-        /* עיצוב כללי לטקסט */
-        .hero-content h1 { font-size: 3.5rem; font-weight: 200; letter-spacing: 12px; margin-bottom: 10px; text-transform: uppercase; }
-        .hero-content p { font-size: 1.1rem; color: #c5a059; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; }
+        /* עיצוב הטקסט */
+        .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; }
+        .sub-title { font-size: 1.1rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
+        .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; }
 
-        nav { display: flex; gap: 40px; }
         .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
         .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
         .en-nav { display: block; font-size: 0.6rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
@@ -57,12 +57,22 @@
 <body>
 
     <section class="hero">
+        <nav>
+            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
+            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
+        </nav>
+
         <div class="hero-content">
             <h1>SHLOMI TOVA</h1>
-            <p>Wildlife Photography</p>
-            
-            <nav>
-                <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
-                <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
-                <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-                <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span>
+            <p class="sub-title">Wildlife Photography</p>
+            <p class="description">
+                מתעד את רגעי הקסם של הטבע הפראי בישראל דרך העדשה. 
+                מתמחה בצילום בעלי חיים וציפורים בסביבתן הטבעית.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
