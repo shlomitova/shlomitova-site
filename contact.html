@@ -15,94 +15,34 @@
         .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
         .contact-page { 
-            height: 100vh; display: flex; align-items: center; 
-            box-sizing: border-box;
-            /* עוצמת תאורה 0.6 כברירת מחדל לנייח */
+            height: 100vh; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg') no-repeat center center; 
             background-size: cover;
-            position: relative;
         }
 
-        /* --- הגדרות למחשב נייח (Desktop) --- */
-        @media (min-width: 769px) {
-            .contact-page { 
-                justify-content: flex-end; 
-                padding: 0 10%; 
-            }
-            .contact-container { 
-                background: rgba(0, 0, 0, 0.45); 
-                backdrop-filter: blur(8px); 
-                -webkit-backdrop-filter: blur(8px);
-                padding: 50px; 
-                width: 100%; 
-                max-width: 500px; 
-                border: 1px solid rgba(255, 255, 255, 0.1); 
-                box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-                text-align: center; 
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .gold-line { margin: 25px auto; }
+        /* שאר העיצוב המקורי של הדף ללא שינוי */
+        .contact-container { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 40px; border-radius: 15px; width: 100%; max-width: 400px; 
+            text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); 
         }
+        input, textarea { 
+            width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 5px; 
+            background: rgba(255,255,255,0.1); color: #fff; outline: none; 
+        }
+        button { 
+            width: 100%; padding: 12px; border: none; border-radius: 5px; 
+            background: #c5a059; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; 
+        }
+        button:hover { background: #e2be7e; }
 
-        /* --- הגדרות לנייד (Mobile) --- */
         @media (max-width: 768px) {
             .contact-page { 
-                /* עוצמת תאורה 0.2 לנייד */
                 background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg') no-repeat center center;
                 background-size: cover;
-                background-position: center center;
             }
-            
-            .contact-container { 
-                position: absolute;
-                bottom: 40px; 
-                left: 50%;
-                transform: translateX(-50%);
-                background: none; 
-                backdrop-filter: none;
-                border: none;
-                box-shadow: none;
-                width: 80%; 
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            h2 { 
-                font-size: 1.8rem; 
-                text-shadow: 2px 2px 10px rgba(0,0,0,1); 
-                margin-bottom: 0px; 
-            }
-            
-            .contact-info { 
-                font-size: 1.1rem; 
-                font-weight: 400; 
-                text-shadow: 1px 1px 8px rgba(0,0,0,1);
-            }
-
-            .gold-line { margin: 15px auto; }
-            .close-page { top: 15px; left: 15px; font-size: 30px; }
+            .contact-container { width: 85%; padding: 30px; }
         }
-
-        /* עיצוב כללי של תוכן */
-        h2 { font-weight: 200; letter-spacing: 5px; color: #fff; text-transform: uppercase; }
-        h2 span { display: block; font-size: 0.9rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
-        .gold-line { width: 50px; height: 1px; background: #c5a059; }
-        
-        .contact-info { line-height: 2; color: #eee; }
-        .contact-link { 
-            text-decoration: none; 
-            color: #fff; 
-            transition: 0.3s; 
-            display: block; 
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-        .contact-link i { color: #c5a059; margin-left: 10px; font-size: 1.2rem; }
-        .contact-link:hover { color: #c5a059; }
     </style>
 </head>
 <body>
@@ -111,26 +51,13 @@
 
     <section class="contact-page">
         <div class="contact-container">
-            <h2>צור קשר<span>GET IN TOUCH</span></h2>
-            <div class="gold-line"></div>
-            
-            <div class="contact-info">
-                <p>אשמח לשמוע מכם ולשתף פעולה</p>
-                
-                <a href="https://wa.me/972549391375" class="contact-link" target="_blank">
-                    <i class="fab fa-whatsapp"></i>054-9391375
-                </a>
-                
-                <a href="mailto:shlomitova@gmail.com" class="contact-link">
-                    <i class="far fa-envelope"></i>shlomitova@gmail.com
-                </a>
-
-                <a href="https://www.instagram.com/shlomi_tova/" class="contact-link" target="_blank">
-                    <i class="fab fa-instagram"></i>shlomi_tova
-                </a>
-            </div>
-            
-            <div class="gold-line"></div>
+            <h2>צור קשר</h2>
+            <form>
+                <input type="text" placeholder="שם מלא" required>
+                <input type="email" placeholder="אימייל" required>
+                <textarea placeholder="הודעה" rows="5" required></textarea>
+                <button type="submit">שלח הודעה</button>
+            </form>
         </div>
     </section>
 
@@ -141,6 +68,5 @@
             }
         });
     </script>
-
 </body>
 </html>
