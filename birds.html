@@ -90,10 +90,19 @@
 
             <div class="gallery-item" onclick="openLightbox(this)">
                 <div class="image-container"><img src="male_montagus_harrier.jpg"></div>
-                <div class="item-caption"><span class="cap-he">זרוע שדות</span><span class="cap-en">Montagu's Harrier</span></div>
+                <div class="item-caption"><span class="cap-he">זרון שדות</span><span class="cap-en">Montagu's Harrier</span></div>
             </div>
-            
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="white_fronted_goose.jpg"></div>
+                <div class="item-caption"><span class="cap-he">אווז לבן-מצח</span><span class="cap-en">White-fronted Goose</span></div>
             </div>
+
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <div class="image-container"><img src="male_hen_harrier.jpg"></div>
+                <div class="item-caption"><span class="cap-he">זרוע תכול</span><span class="cap-en">Hen Harrier</span></div>
+            </div>
+        </div>
     </section>
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
@@ -114,21 +123,16 @@
             document.body.style.overflow = 'auto';
         }
 
-        // ניהול מקש ESC - הפרדה מוחלטת
         window.addEventListener('keydown', function(e) {
             if (e.key === "Escape") {
                 const lightbox = document.getElementById('lightbox');
-                
-                // תמיד נסה לסגור את הלייטבוקס קודם (עובד גם בנייד וגם בנייח)
                 if (lightbox.classList.contains('active')) {
                     closeLightbox();
-                } 
-                // רק אם אנחנו בנייח (מעל 768px) והלייטבוקס סגור - צא לדף הבית
-                else if (window.innerWidth > 768) {
+                } else if (window.innerWidth > 768) {
                     window.location.href = "index.html";
                 }
             }
-        }, true); // ה-true מבטיח שהאירוע ייתפס בעדיפות עליונה
+        }, true);
     </script>
 </body>
 </html>
