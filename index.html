@@ -18,16 +18,19 @@
             position: relative;
         }
 
-        /* --- הגדרות למחשב (Desktop) --- */
+        /* --- הגדרות למחשב נייח (Desktop) --- */
         @media (min-width: 769px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
-                align-items: flex-start; 
+                align-items: flex-start; /* מצמיד לשמאל של המסך */
                 justify-content: center;
-                padding-left: 10%; /* דוחף את כל הגוש לשמאל של הגדי */
+                padding-left: 10%; /* רווח מהקצה השמאלי */
             }
             .hero-content { text-align: left; max-width: 500px; }
-            nav { position: absolute; top: 40px; left: 10%; display: flex; gap: 40px; }
+            nav { 
+                position: absolute; top: 40px; left: 10%; 
+                display: flex; gap: 40px; 
+            }
         }
 
         /* --- הגדרות לנייד (Mobile) --- */
