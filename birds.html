@@ -6,31 +6,54 @@
     <title>Birds | Shlomi Tova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
-        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
+        
+        /* ניווט */
+        nav { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); 
+        }
         .nav-container { display: flex; justify-content: center; gap: 35px; }
         .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
         .he-nav { display: block; font-size: 0.8rem; color: #aaa; }
         .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
         .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
+
+        /* גלריה */
         .gallery-section { padding: 120px 10% 60px; }
         .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
         .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .gallery-item { cursor: pointer; transition: 0.3s; }
-        .image-container { position: relative; width: 100%; padding-top: 66.6%; overflow: hidden; background: #111; }
-        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        
+        /* מיכל התמונה - וידאתי שיש לו גובה כדי שלא יהיה "שקוף" */
+        .image-container { 
+            position: relative; width: 100%; height: 250px; 
+            overflow: hidden; background: #111; border: 1px solid #222; 
+        }
+        .image-container img { 
+            width: 100%; height: 100%; object-fit: cover; transition: 0.6s; 
+        }
         .gallery-item:hover img { transform: scale(1.03); }
+        
         .item-caption { margin-top: 15px; text-align: right; }
         .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
         .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
-        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+
+        /* לייטבוקס (הגדלה) */
+        .lightbox { 
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95); 
+            align-items: center; justify-content: center; 
+        }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90%; }
+        .lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #333; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
     </style>
 </head>
 <body>
+
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
@@ -43,8 +66,8 @@
 
     <section class="gallery-section">
         <h1 class="section-title">ציפורים<span>BIRDS</span></h1>
+        
         <div class="gallery-grid">
-            
             <div class="gallery-item" onclick="openLightbox(this)">
                 <div class="image-container"><img src="common_kestrel.jpg"></div>
                 <div class="item-caption"><span class="cap-he">בז מצוי</span><span class="cap-en">Common Kestrel</span></div>
@@ -62,9 +85,8 @@
 
             <div class="gallery-item" onclick="openLightbox(this)">
                 <div class="image-container"><img src="male_hen_harrier.jpg"></div>
-                <div class="item-caption"><span class="cap-he">זרוע תכול</span><span class="cap-en">Male Hen Harrier</span></div>
+                <div class="item-caption"><span class="cap-he">זרוע תכול</span><span class="cap-en">Hen Harrier</span></div>
             </div>
-
         </div>
     </section>
 
@@ -75,7 +97,8 @@
 
     <script>
         function openLightbox(el) {
-            document.getElementById('lightbox-img').src = el.querySelector('img').src;
+            const img = el.querySelector('img');
+            document.getElementById('lightbox-img').src = img.src;
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
