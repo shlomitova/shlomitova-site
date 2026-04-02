@@ -18,7 +18,7 @@
             position: relative;
         }
 
-        /* --- הגדרות למחשב נייח (Desktop) --- */
+        /* --- הגדרות למחשב נייח (Desktop) - ללא שינוי --- */
         @media (min-width: 769px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
@@ -48,7 +48,9 @@
         @media (max-width: 768px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
-                align-items: center; justify-content: center;
+                align-items: center; 
+                justify-content: flex-end; /* דוחף את התוכן לתחתית המסך */
+                padding-bottom: 50px; /* מרווח מהקצה התחתון */
             }
             
             nav { 
@@ -62,14 +64,29 @@
                 justify-content: center;
             }
 
-            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 50px; }
+            .hero-content { 
+                text-align: center; 
+                display: flex; 
+                flex-direction: column; 
+                align-items: center; 
+                width: 100%; 
+            }
+
             .hero-content h1 { font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 8px; text-transform: uppercase; }
-            .hero-content p.sub-title { font-size: 1rem; letter-spacing: 3px; }
+            
+            /* תיקון צבע כותרת משנה בנייד - זהב בולט יותר */
+            .hero-content p.sub-title { 
+                font-size: 1rem; 
+                letter-spacing: 3px; 
+                color: #ffcc00; /* צהוב חזק יותר לקריאות מקסימלית */
+                font-weight: 500;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* צל קל מאחורי הטקסט שיבלוט */
+            }
+
             .hero-content p.description { font-size: 1.05rem; padding: 0 25px; }
 
-            /* הגדלת פונט וצבע בתפריט נייד */
-            .he-nav { display: block; font-size: 1.1rem; font-weight: 400; }
-            .en-nav { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+            .he-nav { display: block; font-size: 1.1rem; }
+            .en-nav { display: block; font-size: 0.65rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; }
         }
 
         /* עיצוב כללי */
@@ -78,7 +95,6 @@
 
         .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
         .nav-link:hover { color: #c5a059; transform: translateY(-2px); }
-        .nav-link:hover .en-nav { color: #fff; }
     </style>
 </head>
 <body>
