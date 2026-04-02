@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Shlomi Tova</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; height: 100%; }
+        
+        .contact-page {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('White fronted Goose.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 0 10%;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 80px;
+            width: 100%;
+            max-width: 1100px;
+            align-items: flex-start;
+        }
+
+        .contact-box-form { flex: 1.2; text-align: right; }
+        .contact-info { flex: 1; text-align: left; direction: ltr; }
+
+        .styled-form { display: flex; flex-direction: column; gap: 25px; }
+        .form-row { display: flex; gap: 20px; }
+        .styled-form input, .styled-form textarea {
+            background: transparent; border: none; border-bottom: 1.5px solid rgba(255,255,255,0.4);
+            padding: 12px 5px; color: #fff; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .styled-form input:focus, .styled-form textarea:focus { border-bottom-color: #fff; }
+        .styled-form textarea { height: 120px; resize: none; }
+        
+        .submit-btn-black {
+            background: #000; color: #fff; border: none; padding: 12px 50px;
+            align-self: flex-start; cursor: pointer; border-radius: 50px; font-size: 0.9rem;
+            letter-spacing: 2px; transition: 0.3s; margin-top: 10px;
+        }
+        .submit-btn-black:hover { background: #fff; color: #000; }
+
+        .contact-info h3 { font-size: 1.8rem; font-weight: 300; margin-bottom: 20px; }
+        .contact-info p { color: #ddd; line-height: 1.6; margin-bottom: 30px; font-weight: 300; }
+        .direct-contact a { display: block; color: #fff; text-decoration: none; margin-bottom: 12px; font-size: 1.1rem; }
+        .contact-socials { display: flex; gap: 25px; margin-top: 30px; }
+        .contact-socials a { color: #fff; font-size: 1.4rem; transition: 0.3s; }
+        .back-home { position: absolute; top: 30px; right: 40px; color: #fff; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; border: 1px solid rgba(255,255,255,0.3); padding: 8px 20px; border-radius: 50px; transition: 0.3s; }
+        .back-home:hover { background: #fff; color: #000; }
+
+        @media (max-width: 768px) {
+            .contact-container { flex-direction: column-reverse; gap: 40px; margin-top: 80px; }
+            .contact-page { height: auto; padding: 50px 10%; }
+            .form-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-home">חזרה לגלריה</a>
+
+    <section class="contact-page">
+        <div class="contact-container">
+            <div class="contact-box-form">
+                <form action="https://formspree.io/f/xzdkaeqp" method="POST" class="styled-form">
+                    <div class="form-row">
+                        <input type="text" name="first-name" placeholder="First Name" required>
+                        <input type="text" name="last-name" placeholder="Last Name" required>
+                    </div>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <textarea name="message" placeholder="How can I help you?" required></textarea>
+                    <button type="submit" class="submit-btn-black">SUBMIT</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Shlomi Tova</h3>
+                <p>For any inquiries, collaborations, or photo purchases, feel free to send a message.</p>
+                <div class="direct-contact">
+                    <a href="mailto:shlomitova@gmail.com">shlomitova@gmail.com</a>
+                    <a href="tel:0549991171">972-54-999-1171</a>
+                </div>
+                <div class="contact-socials">
+                    <a href="https://www.facebook.com/shlomi.tova" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/shlomitova" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/972549991171" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
