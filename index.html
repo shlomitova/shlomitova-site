@@ -18,7 +18,7 @@
             position: relative;
         }
 
-        /* --- הגדרות למחשב נייח (Desktop) --- */
+        /* --- הגדרות למחשב נייח (Desktop) - ללא שינוי --- */
         @media (min-width: 769px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
@@ -34,34 +34,46 @@
                 flex-direction: column;
                 align-items: center; 
             }
-            /* השם חוזר לגודל המקורי */
             .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
             
-            /* תפריט הניווט - הגדלת הפונט */
             nav { 
                 position: absolute; top: 40px; right: 18%; 
-                display: flex; gap: 50px; /* הגדלתי מעט גם את הרווח ביניהם */
+                display: flex; gap: 50px; 
             }
-            .he-nav { display: block; font-size: 1.3rem; letter-spacing: 1px; } /* הגדלה */
-            .en-nav { display: block; font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; } /* הגדלה */
+            .he-nav { display: block; font-size: 1.3rem; letter-spacing: 1px; }
+            .en-nav { display: block; font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
         }
 
-        /* --- הגדרות לנייד (Mobile) - ללא שינוי --- */
+        /* --- הגדרות לנייד (Mobile) - העברת התפריט למעלה --- */
         @media (max-width: 768px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
                 align-items: center; justify-content: center;
             }
-            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
+            
+            /* תפריט ניווט בנייד - למעלה */
+            nav { 
+                position: absolute; 
+                top: 20px; /* מרווח מהחלק העליון */
+                left: 50%; 
+                transform: translateX(-50%); /* ממרכז את התפריט */
+                display: flex; 
+                gap: 15px; 
+                flex-wrap: nowrap; /* מונע מהתפריט להישבר ליותר משורה אחת אם אפשר */
+                width: 90%; 
+                justify-content: center;
+            }
+
+            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 40px; }
             .hero-content h1 { font-size: 1.8rem; letter-spacing: 4px; margin-bottom: 5px; text-transform: uppercase; }
             .hero-content p.sub-title { font-size: 0.8rem; letter-spacing: 3px; }
             .hero-content p.description { font-size: 0.9rem; padding: 0 20px; }
-            nav { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
-            .he-nav { display: block; font-size: 1rem; }
-            .en-nav { display: block; font-size: 0.6rem; }
+
+            .he-nav { display: block; font-size: 0.9rem; }
+            .en-nav { display: block; font-size: 0.55rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
         }
 
-        /* עיצוב כללי */
+        /* עיצוב כללי של הקישורים והטקסט */
         .sub-title { font-size: 1.1rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
         .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; max-width: 400px; }
 
