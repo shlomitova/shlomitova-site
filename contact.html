@@ -6,137 +6,36 @@
     <title>Contact | Shlomi Tova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; height: 100%; overflow-x: hidden; }
-        
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px);
-        }
-        .nav-container { display: flex; justify-content: center; gap: 35px; }
-        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
-        .he-nav { display: block; font-size: 0.8rem; color: #aaa; }
-        .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
-
-        /* כפתור ה-X לסגירה וחזרה הביתה */
-        .close-page {
-            position: fixed; top: 85px; right: 40px; color: #fff; font-size: 45px; 
-            font-weight: 100; cursor: pointer; z-index: 1100; transition: 0.3s; text-decoration: none; line-height: 1;
-        }
-        .close-page:hover { color: #c5a059; transform: scale(1.1); }
-
-        .contact-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('White fronted Goose.jpg') no-repeat center center;
-            background-size: cover;
-            padding: 120px 10% 60px;
-        }
-
-        .contact-container {
-            display: flex;
-            gap: 80px;
-            width: 100%;
-            max-width: 1100px;
-            align-items: flex-start;
-            outline: none;
-        }
-
-        .contact-box-form { flex: 1.2; text-align: right; }
-        .contact-info { flex: 1; text-align: left; direction: ltr; }
-
-        .styled-form { display: flex; flex-direction: column; gap: 25px; }
-        .form-row { display: flex; gap: 20px; }
-        .styled-form input, .styled-form textarea {
-            background: transparent; border: none; border-bottom: 1.5px solid rgba(255,255,255,0.4);
-            padding: 12px 5px; color: #fff; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s;
-        }
-        .styled-form input:focus, .styled-form textarea:focus { border-bottom-color: #fff; }
-        .styled-form textarea { height: 120px; resize: none; }
-        
-        .submit-btn-black {
-            background: #000; color: #fff; border: none; padding: 12px 50px;
-            align-self: flex-start; cursor: pointer; border-radius: 50px; font-size: 0.9rem;
-            letter-spacing: 2px; transition: 0.3s; margin-top: 10px;
-        }
-        .submit-btn-black:hover { background: #fff; color: #000; }
-
-        .contact-info h3 { font-size: 1.8rem; font-weight: 300; margin-bottom: 20px; letter-spacing: 1px; }
-        .contact-info p { color: #ddd; line-height: 1.6; margin-bottom: 30px; font-weight: 300; }
-        .direct-contact a { display: block; color: #fff; text-decoration: none; margin-bottom: 12px; font-size: 1.1rem; }
-        .contact-socials { display: flex; gap: 25px; margin-top: 30px; }
-        .contact-socials a { color: #fff; font-size: 1.4rem; transition: 0.3s; }
-        .contact-socials a:hover { color: #c5a059; }
-
-        @media (max-width: 768px) {
-            .contact-container { flex-direction: column-reverse; gap: 40px; }
-            .form-row { flex-direction: column; }
-            .contact-info { text-align: right; direction: rtl; }
-            .submit-btn-black { align-self: center; width: 100%; }
-            .close-page { top: 75px; right: 20px; font-size: 35px; }
-        }
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; height: 100%; overflow: hidden; }
+        .close-page { position: fixed; top: 30px; right: 40px; color: #fff; font-size: 45px; text-decoration: none; z-index: 1100; transition: 0.3s; }
+        .close-page:hover { color: #c5a059; }
+        .contact-page { height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('white_fronted_goose.jpg') no-repeat center center; background-size: cover; }
+        .contact-container { background: rgba(10, 10, 10, 0.8); padding: 40px; width: 90%; max-width: 500px; text-align: center; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); outline: none; }
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 10px; }
+        h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
+        form { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
+        input, textarea { background: transparent; border: none; border-bottom: 1px solid #444; padding: 10px; color: #fff; outline: none; font-family: inherit; }
+        input:focus, textarea:focus { border-bottom-color: #c5a059; }
+        button { background: #c5a059; color: #000; border: none; padding: 15px; cursor: pointer; font-weight: bold; margin-top: 20px; transition: 0.3s; letter-spacing: 2px; }
+        button:hover { background: #fff; }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
-            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
-            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
-            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-            <a href="contact.html" class="nav-link active"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
-        </div>
-    </nav>
-
-    <a href="index.html" class="close-page" title="Back to Gallery">&times;</a>
-
+    <a href="index.html" class="close-page">&times;</a>
     <section class="contact-page">
-        <div class="contact-container" id="contact-content" tabindex="0">
-            
-            <div class="contact-box-form">
-                <form action="https://formspree.io/f/xzdkaeqp" method="POST" class="styled-form">
-                    <div class="form-row">
-                        <input type="text" name="first-name" placeholder="First Name" required>
-                        <input type="text" name="last-name" placeholder="Last Name" required>
-                    </div>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <textarea name="message" placeholder="How can I help you?" required></textarea>
-                    <button type="submit" class="submit-btn-black">SUBMIT</button>
-                </form>
-            </div>
-
-            <div class="contact-info">
-                <h3>Shlomi Tova</h3>
-                <p>For any inquiries, collaborations, or photo purchases, feel free to send a message and I'll get back to you as soon as possible.</p>
-                <div class="direct-contact">
-                    <a href="mailto:shlomitova@gmail.com">shlomitova@gmail.com</a>
-                    <a href="tel:0549991171">972-54-999-1171</a>
-                </div>
-                <div class="contact-socials">
-                    <a href="https://www.facebook.com/shlomi.tova" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/shlomitova" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/972549991171" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-
+        <div class="contact-container" id="contact-box" tabindex="0">
+            <h2>צור קשר<span>CONTACT</span></h2>
+            <form action="https://formspree.io/f/xzdkaeqp" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" rows="4" required></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
         </div>
     </section>
-
     <script>
-        // פוקוס אוטומטי לשיפור התגובה של ESC
-        window.addEventListener('DOMContentLoaded', () => {
-            const content = document.getElementById('contact-content');
-            content.focus();
-        });
-
-        // חזרה לדף הבית בלחיצה על Esc
-        window.addEventListener('keyup', (e) => {
-            if (e.key === "Escape") window.location.href = "index.html";
-        });
+        window.addEventListener('DOMContentLoaded', () => document.getElementById('contact-box').focus());
+        window.addEventListener('keyup', (e) => { if (e.key === "Escape") window.location.href = "index.html"; });
     </script>
-
 </body>
 </html>
