@@ -8,59 +8,71 @@
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
         
+        /* כפתור סגירה (X) */
         .close-page { 
             position: fixed; top: 30px; right: 40px; color: #fff; font-size: 50px; 
             text-decoration: none; z-index: 1100; transition: 0.3s; 
         }
         .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
+        /* רקע הדף - הגדי ממוקם בצד ימין (right center) */
         .contact-page { 
             height: 100vh; display: flex; align-items: center; 
-            justify-content: flex-start; /* מצמיד לשמאל הפיזי */
-            padding: 0 8%;
-            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%), url('ibex.jpg') no-repeat right center; 
+            justify-content: flex-start; /* הצמדת מכולת הטופס לשמאל הפיזי */
+            padding: 0 8%; /* מרווח מהשוליים השמאליים */
+            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 100%), url('ibex.jpg') no-repeat right center; 
             background-size: cover; 
         }
 
+        /* מכולת הטופס השקופה */
         .contact-container { 
-            background: rgba(255, 255, 255, 0.05); /* לבן שקוף מאוד */
-            padding: 40px; width: 100%; max-width: 400px; 
+            background: rgba(10, 10, 10, 0.7); /* שחור שקוף כדי שהטקסט הלבן יבלוט */
+            padding: 50px; width: 100%; max-width: 400px; 
             text-align: center; border: 1px solid rgba(255,255,255,0.1); 
             backdrop-filter: blur(15px); /* אפקט טשטוש יוקרתי */
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             outline: none;
         }
 
-        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2rem; }
-        h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.2rem; text-transform: uppercase; }
+        h2 span { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; font-weight: 400; }
         
-        .gold-line { width: 30px; height: 1px; background: #c5a059; margin: 20px auto; }
+        .gold-line { width: 30px; height: 1px; background: #c5a059; margin: 25px auto; }
 
         form { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
         
         input, textarea { 
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); 
-            padding: 12px; color: #fff; outline: none; font-family: inherit; transition: 0.3s;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); 
+            padding: 15px; color: #fff; outline: none; font-family: inherit; transition: 0.3s;
+            text-align: center; /* ממרכז את טקסט המילוי */
         }
         
-        input:focus, textarea:focus { border-color: #c5a059; background: rgba(255,255,255,0.08); }
+        /* תיקון צבע טקסט המילוי (Placeholder) שיהיה קריא */
+        ::-webkit-input-placeholder { color: #aaa !important; /* אפור בהיר */ }
+        :-moz-placeholder { color: #aaa !important; /* אפור בהיר */ }
+        ::-moz-placeholder { color: #aaa !important; /* אפור בהיר */ }
+        :-ms-input-placeholder { color: #aaa !important; /* אפור בהיר */ }
+        
+        input:focus, textarea:focus { border-color: #c5a059; background: rgba(255,255,255,0.05); }
         
         button { 
-            background: #c5a059; color: #000; border: none; padding: 15px; 
-            cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.3s; 
-            letter-spacing: 2px; text-transform: uppercase;
+            background: #c5a059; color: #000; border: none; padding: 18px; 
+            cursor: pointer; font-weight: bold; margin-top: 15px; transition: 0.3s; 
+            letter-spacing: 2px; text-transform: uppercase; font-size: 1rem;
         }
         button:hover { background: #fff; transform: translateY(-2px); }
 
         @media (max-width: 768px) {
             .contact-page { justify-content: center; padding: 0 5%; }
-            .contact-container { background: rgba(0,0,0,0.8); }
+            .contact-container { background: rgba(10, 10, 10, 0.9); padding: 35px; width: 90%; }
+            .close-page { top: 20px; right: 20px; font-size: 35px; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="close-page">&times;</a>
+    <a href="index.html" class="close-page" title="חזרה לדף הבית">&times;</a>
 
     <section class="contact-page">
         <div class="contact-container" id="contact-box" tabindex="0">
@@ -70,15 +82,24 @@
             <form action="https://formspree.io/f/xzdkaeqp" method="POST">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Message" rows="4" required></textarea>
+                <textarea name="message" placeholder="Message" rows="5" required></textarea>
                 <button type="submit">SEND MESSAGE</button>
             </form>
         </div>
     </section>
 
     <script>
-        window.addEventListener('DOMContentLoaded', () => document.getElementById('contact-box').focus());
-        window.addEventListener('keyup', (e) => { if (e.key === "Escape") window.location.href = "index.html"; });
+        // שׂים פוקוס על המיכל הראשי כדי שיקליט לחיצות מקלדת (Esc)
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('contact-box').focus();
+        });
+
+        // יציאה עם Esc לדף הבית
+        window.addEventListener('keyup', (e) => {
+            if (e.key === "Escape") {
+                window.location.href = "index.html";
+            }
+        });
     </script>
 </body>
 </html>
