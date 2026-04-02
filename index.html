@@ -10,26 +10,40 @@
         
         .hero { 
             height: 100vh; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
         }
 
-        /* הגדרה למחשב בלבד - כהות 0.6 */
+        /* הגדרות למחשב נייח בלבד (Desktop) */
         @media (min-width: 769px) {
             .hero { 
+                /* כהות 0.6 ויישור לשמאל */
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
+                align-items: flex-start; 
+                padding-left: 10%; 
             }
+            .hero-content { text-align: left; } /* יישור שורות הטקסט לשמאל */
+            nav { justify-content: flex-start; }
         }
 
-        /* הגדרה לנייד בלבד - כהות 0.2 */
+        /* הגדרות לנייד בלבד (Mobile) */
         @media (max-width: 768px) {
             .hero { 
+                /* כהות 0.2 ויישור למרכז */
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
+                align-items: center; 
+                text-align: center;
             }
+            .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
+            .hero-content p { font-size: 0.8rem; letter-spacing: 3px; }
+            nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
         }
 
+        /* עיצוב כללי לטקסט */
         .hero-content h1 { font-size: 3.5rem; font-weight: 200; letter-spacing: 12px; margin-bottom: 10px; text-transform: uppercase; }
         .hero-content p { font-size: 1.1rem; color: #c5a059; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; }
 
@@ -38,12 +52,6 @@
         .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
         .en-nav { display: block; font-size: 0.6rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
         .nav-link:hover { color: #c5a059; transform: translateY(-3px); }
-
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
-            .hero-content p { font-size: 0.8rem; letter-spacing: 3px; }
-            nav { gap: 15px; flex-wrap: wrap; justify-content: center; padding: 0 10px; }
-        }
     </style>
 </head>
 <body>
@@ -57,10 +65,4 @@
                 <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
                 <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
                 <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-                <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
-            </nav>
-        </div>
-    </section>
-
-</body>
-</html>
+                <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span>
