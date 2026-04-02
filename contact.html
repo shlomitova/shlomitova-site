@@ -15,33 +15,80 @@
         .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
         .contact-page { 
-            height: 100vh; display: flex; align-items: center; justify-content: center;
+            height: 100vh; display: flex; align-items: center; 
+            box-sizing: border-box;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg') no-repeat center center; 
             background-size: cover;
+            position: relative;
         }
 
-        /* שאר העיצוב המקורי של הדף ללא שינוי */
-        .contact-container { 
-            background: rgba(255, 255, 255, 0.05); 
-            padding: 40px; border-radius: 15px; width: 100%; max-width: 400px; 
-            text-align: center; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); 
+        /* --- הגדרות למחשב נייח (Desktop) --- */
+        @media (min-width: 769px) {
+            .contact-page { 
+                justify-content: flex-end; 
+                padding: 0 10%; 
+            }
+            .contact-container { 
+                background: rgba(255, 255, 255, 0.08); 
+                backdrop-filter: blur(15px); 
+                -webkit-backdrop-filter: blur(15px);
+                padding: 50px; 
+                width: 100%; 
+                max-width: 500px; 
+                border: 1px solid rgba(255, 255, 255, 0.2); 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+                text-align: center; 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
         }
+
+        /* תיקון קריאות הטקסט בתוך השדות */
         input, textarea { 
-            width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 5px; 
-            background: rgba(255,255,255,0.1); color: #fff; outline: none; 
+            width: 100%; padding: 15px; margin: 10px 0; border: 1px solid rgba(255,255,255,0.3); 
+            background: rgba(0,0,0,0.4); 
+            color: #fff; /* טקסט שהמשתמש מקליד */
+            outline: none; font-family: inherit; font-size: 1rem;
         }
+
+        /* שינוי צבע ה-Placeholder (הטקסט האפור שביקשת לתקן) */
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.8) !important; /* לבן בהיר וברור */
+            opacity: 1;
+        }
+
         button { 
-            width: 100%; padding: 12px; border: none; border-radius: 5px; 
+            width: 100%; padding: 15px; border: none; 
             background: #c5a059; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; 
+            text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;
         }
         button:hover { background: #e2be7e; }
 
+        h2 { font-weight: 200; letter-spacing: 5px; margin-bottom: 5px; font-size: 2.5rem; color: #fff; text-transform: uppercase; }
+        h2 span { display: block; font-size: 0.9rem; color: #c5a059; letter-spacing: 3px; margin-top: 10px; }
+        .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 25px auto; }
+
+        .social-links { margin-top: 30px; display: flex; gap: 25px; }
+        .social-link { color: #fff; font-size: 1.5rem; transition: 0.3s; }
+        .social-link:hover { color: #c5a059; transform: translateY(-3px); }
+
+        /* --- הגדרות לנייד (Mobile) --- */
         @media (max-width: 768px) {
             .contact-page { 
                 background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg') no-repeat center center;
                 background-size: cover;
+                justify-content: center;
             }
-            .contact-container { width: 85%; padding: 30px; }
+            .contact-container { 
+                width: 85%; padding: 30px; 
+                background: rgba(0, 0, 0, 0.6); 
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                text-align: center;
+            }
+            h2 { font-size: 2rem; }
+            .close-page { top: 15px; left: 15px; font-size: 30px; }
         }
     </style>
 </head>
@@ -51,21 +98,27 @@
 
     <section class="contact-page">
         <div class="contact-container">
-            <h2>צור קשר</h2>
-            <form>
+            <h2>צור קשר<span>Get in Touch</span></h2>
+            <div class="gold-line"></div>
+            
+            <form style="width: 100%;">
                 <input type="text" placeholder="שם מלא" required>
                 <input type="email" placeholder="אימייל" required>
-                <textarea placeholder="הודעה" rows="5" required></textarea>
+                <textarea placeholder="הודעה" rows="4" required></textarea>
                 <button type="submit">שלח הודעה</button>
             </form>
+
+            <div class="social-links">
+                <a href="https://wa.me/972549391375" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:shlomitova@gmail.com" class="social-link"><i class="far fa-envelope"></i></a>
+                <a href="https://www.instagram.com/shlomi_tova/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </section>
 
     <script>
         window.addEventListener('keyup', (e) => {
-            if (e.key === "Escape") {
-                window.location.href = "index.html";
-            }
+            if (e.key === "Escape") window.location.href = "index.html";
         });
     </script>
 </body>
