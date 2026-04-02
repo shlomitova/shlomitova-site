@@ -6,15 +6,17 @@
     <title>Shlomi Tova | Nature & Wildlife Photography</title>
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; overflow: hidden; }
-        
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             background: rgba(5, 5, 5, 0.4); backdrop-filter: blur(5px);
             padding: 20px 0;
         }
         .nav-container { display: flex; justify-content: center; gap: 40px; }
-        .nav-container a { color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; font-weight: 300; }
-        .nav-container a:hover { color: #c5a059; }
+        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
+        .nav-link span { display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .he-nav { font-size: 0.9rem; color: #fff; margin-bottom: 2px; }
+        .en-nav { font-size: 0.65rem; color: #aaa; }
+        .nav-link:hover .he-nav, .nav-link:hover .en-nav { color: #c5a059; }
 
         .hero {
             height: 100vh; width: 100%;
@@ -39,9 +41,9 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="mammals.html">יונקים</a>
-            <a href="birds.html">ציפורים</a>
-            <a href="contact.html">צור קשר</a>
+            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
         </div>
     </nav>
     <section class="hero">
