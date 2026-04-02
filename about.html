@@ -17,7 +17,6 @@
         .about-page { 
             height: 100vh; display: flex; align-items: center; 
             box-sizing: border-box;
-            /* עוצמת תאורה של דף הבית לנייח - 0.6 */
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg') no-repeat center center; 
             background-size: cover;
             position: relative;
@@ -49,7 +48,6 @@
         /* --- הגדרות לנייד (Mobile) --- */
         @media (max-width: 768px) {
             .about-page { 
-                /* עוצמת תאורה של דף הבית לנייד - 0.2 */
                 background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg') no-repeat center center;
                 background-size: cover;
                 background-position: center center;
@@ -112,6 +110,14 @@
             <div class="gold-line"></div>
         </div>
     </section>
+
+    <script>
+        window.addEventListener('keyup', (e) => {
+            if (e.key === "Escape") {
+                window.location.href = "index.html";
+            }
+        });
+    </script>
 
 </body>
 </html>
