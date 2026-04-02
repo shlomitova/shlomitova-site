@@ -8,13 +8,26 @@
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
         
-        /* מסך הבית - הבהרת הרקע */
         .hero { 
             height: 100vh; 
-            /* שיניתי את ה-0.6 ל-0.3 כדי שיהיה הרבה יותר בהיר */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ibex.jpg') no-repeat center center; 
-            background-size: cover; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        /* הגדרה למחשב בלבד - כהות 0.6 */
+        @media (min-width: 769px) {
+            .hero { 
+                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
+            }
+        }
+
+        /* הגדרה לנייד בלבד - כהות 0.2 */
+        @media (max-width: 768px) {
+            .hero { 
+                background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
+            }
         }
 
         .hero-content h1 { font-size: 3.5rem; font-weight: 200; letter-spacing: 12px; margin-bottom: 10px; text-transform: uppercase; }
@@ -25,19 +38,11 @@
         .he-nav { display: block; font-size: 1rem; letter-spacing: 1px; }
         .en-nav { display: block; font-size: 0.6rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
         .nav-link:hover { color: #c5a059; transform: translateY(-3px); }
-        .nav-link:hover .en-nav { color: #fff; }
 
-        /* תיקונים ספציפיים לנייד */
         @media (max-width: 768px) {
-            .hero { 
-                /* בנייד המיסוך אפילו יותר עדין כדי לראות את הגדי */
-                background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg') no-repeat center center;
-                background-size: cover;
-            }
             .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
             .hero-content p { font-size: 0.8rem; letter-spacing: 3px; }
-            nav { gap: 20px; flex-wrap: wrap; justify-content: center; padding: 0 20px; }
-            .he-nav { font-size: 0.9rem; }
+            nav { gap: 15px; flex-wrap: wrap; justify-content: center; padding: 0 10px; }
         }
     </style>
 </head>
