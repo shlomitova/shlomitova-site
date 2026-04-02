@@ -6,7 +6,12 @@
     <title>Shlomi Tova | Nature Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; overflow: hidden; }
+        /* איפוס כללי כדי למנוע גלילה מיותרת */
+        body, html { 
+            margin: 0; padding: 0; width: 100%; height: 100%; 
+            font-family: 'Segoe UI', sans-serif; background: #050505; 
+            color: #fff; overflow: hidden; 
+        }
         
         nav { 
             position: fixed; top: 0; width: 100%; z-index: 1000; 
@@ -19,46 +24,53 @@
         .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
         .nav-link:hover .he-nav, .active .he-nav { color: #c5a059; }
 
-        /* שער עם מיסוך צדדי */
+        /* שער - הגבלה של התמונה למסך בלבד */
         .hero { 
-            height: 100vh; width: 100%;
-            background: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%), url('ibex.jpg') no-repeat center center; 
+            height: 100vh; width: 100vw;
+            /* המיסוך הכהה בצד שמאל (מכיוון שהדף RTL, שמאל זה הסוף של ה-gradient) */
+            background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%), url('ibex.jpg') no-repeat center center; 
             background-size: cover; 
             display: flex; align-items: center; justify-content: flex-start; padding: 0 8%;
+            box-sizing: border-box;
         }
 
-        .hero-content { max-width: 500px; text-align: right; z-index: 10; }
+        /* הבלוק בשמאל */
+        .hero-content { 
+            max-width: 400px; 
+            text-align: center; /* יישור טקסט למרכז בתוך הבלוק */
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* ממרכז את האלמנטים אחד מתחת לשני */
+        }
         
         .hero-content h1 { 
-            font-size: 3.5rem; font-weight: 200; letter-spacing: 8px; margin: 0; 
-            text-transform: uppercase; line-height: 1.1;
+            font-size: 3rem; font-weight: 200; letter-spacing: 6px; margin: 0; 
+            text-transform: uppercase; line-height: 1.1; color: #fff;
         }
         .hero-content p.subtitle { 
-            font-size: 1.1rem; color: #c5a059; letter-spacing: 4px; 
-            font-weight: 300; text-transform: uppercase; margin: 15px 0 30px 0; 
+            font-size: 1rem; color: #c5a059; letter-spacing: 4px; 
+            font-weight: 300; text-transform: uppercase; margin: 15px 0 20px 0; 
         }
 
-        .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 25px 0; }
+        .gold-line { width: 40px; height: 1px; background: #c5a059; margin: 20px 0; }
 
         .about-text { 
-            font-size: 1.1rem; line-height: 1.8; color: #ddd; font-weight: 300; 
-            margin-bottom: 30px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.05rem; line-height: 1.7; color: #ddd; font-weight: 300; 
+            margin-bottom: 25px; text-shadow: 1px 1px 5px rgba(0,0,0,1);
         }
 
-        .social-links { display: flex; gap: 25px; }
-        .social-links a { color: #fff; font-size: 1.4rem; transition: 0.3s; }
+        .social-links { display: flex; gap: 20px; justify-content: center; }
+        .social-links a { color: #fff; font-size: 1.3rem; transition: 0.3s; }
         .social-links a:hover { color: #c5a059; transform: translateY(-3px); }
 
         @media (max-width: 768px) {
             .hero { 
                 justify-content: center; padding: 0 5%; 
-                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg') no-repeat center center;
-                background-size: cover;
+                background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('ibex.jpg') no-repeat center center;
             }
-            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .social-links { justify-content: center; }
-            .gold-line { margin: 25px auto; }
+            .hero-content { max-width: 90%; }
+            .hero-content h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
