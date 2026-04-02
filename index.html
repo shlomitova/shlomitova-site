@@ -25,16 +25,22 @@
         }
         .content-box {
             margin-right: 8%; padding: 45px; background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); text-align: center; max-width: 400px;
+            backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); text-align: center; max-width: 450px;
         }
         h1 { font-size: 2.6rem; font-weight: 200; letter-spacing: 7px; margin: 0; text-transform: uppercase; }
-        .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 25px auto; }
-        .subtitle { font-size: 0.9rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; }
+        .gold-line { width: 50px; height: 1px; background: #c5a059; margin: 20px auto; }
+        .subtitle { font-size: 0.9rem; letter-spacing: 3px; color: #aaa; text-transform: uppercase; margin-bottom: 25px; }
+        
+        /* עיצוב פסקת אודות */
+        .about-text { text-align: center; line-height: 1.6; }
+        .about-he { font-size: 1.05rem; font-weight: 300; color: #eee; margin-bottom: 15px; }
+        .about-en { font-size: 0.85rem; font-weight: 300; color: #aaa; letter-spacing: 0.5px; }
 
         @media (max-width: 768px) {
             .hero { justify-content: center; align-items: flex-end; }
-            .content-box { margin-right: 0; margin-bottom: 80px; width: 85%; }
-            .nav-container { gap: 20px; }
+            .content-box { margin-right: 0; margin-bottom: 60px; width: 85%; padding: 30px; }
+            .nav-container { gap: 15px; }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -51,6 +57,15 @@
             <h1>SHLOMI TOVA</h1>
             <div class="gold-line"></div>
             <p class="subtitle">Nature • Wildlife • Astrophotography</p>
+            
+            <div class="about-text">
+                <p class="about-he">
+                    נעים מאוד, אני שלומי. צלם טבע וחיות בר המוקסם מהרגעים החבויים והפראיים של ישראל. דרך העדשה אני שואף להביא את היופי של הטבע אליכם הביתה.
+                </p>
+                <p class="about-en">
+                    Wildlife and nature photographer capturing the raw beauty of the natural world. Dedicated to documenting Israel's unique wildlife through a professional lens.
+                </p>
+            </div>
         </div>
     </section>
 </body>
