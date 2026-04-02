@@ -5,20 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birds | Shlomi Tova</title>
     <style>
-        /* אותו עיצוב כמו היונקים */
+        /* אותו עיצוב כמו דף היונקים */
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
-        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; }
-        .nav-container { display: flex; justify-content: center; gap: 30px; }
-        .nav-container a { color: #aaa; text-decoration: none; font-size: 0.8rem; letter-spacing: 1px; }
-        .nav-container a.active { color: #c5a059; }
-        .gallery-section { padding: 100px 10%; }
-        .section-title { text-align: center; font-size: 2rem; letter-spacing: 5px; margin-bottom: 50px; font-weight: 200; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; }
+        .nav-container { display: flex; justify-content: center; gap: 35px; }
+        .nav-link { text-align: center; text-decoration: none; }
+        .he-nav { display: block; font-size: 0.8rem; color: #aaa; }
+        .en-nav { display: block; font-size: 0.6rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .active .he-nav { color: #c5a059; }
+        .gallery-section { padding: 120px 10%; }
+        .section-title { text-align: center; font-size: 2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; }
+        .section-title span { display: block; font-size: 0.8rem; color: #c5a059; margin-top: 10px; letter-spacing: 3px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
         .gallery-item { cursor: pointer; }
-        .image-container { position: relative; width: 100%; padding-top: 66.66%; overflow: hidden; }
-        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .image-container { position: relative; width: 100%; padding-top: 66.66%; overflow: hidden; border-radius: 2px; }
+        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .gallery-item:hover img { transform: scale(1.05); }
-        .item-caption { margin-top: 15px; text-align: right; font-size: 1.1rem; }
+        .item-caption { margin-top: 15px; text-align: right; }
+        .cap-he { display: block; font-size: 1.1rem; font-weight: 300; margin-bottom: 4px; }
+        .cap-en { display: block; font-size: 0.85rem; color: #c5a059; font-weight: 300; letter-spacing: 1px; }
         .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 90%; max-height: 90%; }
@@ -27,19 +32,19 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html">בית</a>
-            <a href="mammals.html">יונקים</a>
-            <a href="birds.html" class="active">ציפורים</a>
-            <a href="contact.html">צור קשר</a>
+            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
+            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="birds.html" class="nav-link active"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
         </div>
     </nav>
     <section class="gallery-section">
-        <h1 class="section-title">ציפורים | BIRDS</h1>
+        <h1 class="section-title">ציפורים<span>BIRDS</span></h1>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="Common Kestrel.jpg"></div><div class="item-caption">בז מצוי</div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="male Montagus harrier.jpg"></div><div class="item-caption">זרוע שדות (זכר)</div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="White fronted Goose.jpg"></div><div class="item-caption">אווז לבן-מצח</div></div>
-            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="male Hen Harrier.jpg"></div><div class="item-caption">זרוע תכול (זכר)</div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="Common Kestrel.jpg"></div><div class="item-caption"><span class="cap-he">בז מצוי</span><span class="cap-en">Common Kestrel</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="male Montagus harrier.jpg"></div><div class="item-caption"><span class="cap-he">זרוע שדות (זכר)</span><span class="cap-en">Male Montagu's Harrier</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="White fronted Goose.jpg"></div><div class="item-caption"><span class="cap-he">אווז לבן-מצח</span><span class="cap-en">White-fronted Goose</span></div></div>
+            <div class="gallery-item" onclick="openLightbox(this)"><div class="image-container"><img src="male Hen Harrier.jpg"></div><div class="item-caption"><span class="cap-he">זרוע תכול (זכר)</span><span class="cap-en">Male Hen Harrier</span></div></div>
         </div>
     </section>
     <div id="lightbox" class="lightbox" onclick="this.classList.remove('active')"><img id="lightbox-img"></div>
