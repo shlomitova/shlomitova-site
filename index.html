@@ -11,53 +11,59 @@
         .hero { 
             height: 100vh; 
             display: flex; 
+            flex-direction: column; 
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             position: relative;
         }
 
-        /* --- הגדרות למחשב נייח בלבד (Desktop) --- */
+        /* --- הגדרות למחשב נייח (Desktop) - ללא שינוי --- */
         @media (min-width: 769px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); 
             }
-            /* מיקום אבסולוטי מהשמאל - כדי שלא יזוז לצד השני */
             .hero-content { 
                 position: absolute;
                 top: 50%;
-                left: 15%; /* זה דוחף אותו מהשוליים השמאליים פנימה */
+                left: 18%; 
                 transform: translateY(-50%);
-                text-align: center; /* ממרכז את השורות אחת לשנייה */
-                max-width: 450px;
+                text-align: center; 
+                max-width: 500px;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                align-items: center; 
             }
+            .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
             nav { 
-                position: absolute; 
-                top: 40px; 
-                left: 15%; 
-                display: flex; 
-                gap: 40px; 
+                position: absolute; top: 40px; left: 18%; 
+                display: flex; gap: 40px; 
             }
         }
 
-        /* --- הגדרות לנייד (Mobile) --- */
+        /* --- הגדרות לנייד (Mobile) - כאן התיקון --- */
         @media (max-width: 768px) {
             .hero { 
                 background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg');
-                flex-direction: column;
                 align-items: center; justify-content: center;
             }
-            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            nav { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
-            .hero-content h1 { font-size: 2.2rem; letter-spacing: 6px; }
+            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
+            
+            /* הקטנת השם כדי שייכנס למסך הנייד */
+            .hero-content h1 { 
+                font-size: 1.8rem; /* מוקטן מ-4rem כדי שלא יחרוג */
+                letter-spacing: 4px; 
+                margin-bottom: 5px; 
+                text-transform: uppercase;
+                white-space: normal; /* מאפשר ירידת שורה אם עדיין ארוך מדי */
+            }
+            
             .hero-content p.sub-title { font-size: 0.8rem; letter-spacing: 3px; }
+            .hero-content p.description { font-size: 0.9rem; padding: 0 20px; }
+            nav { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
         }
 
-        /* עיצוב הטקסט */
-        .hero-content h1 { font-size: 4rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
+        /* עיצוב כללי של חלקי הטקסט */
         .sub-title { font-size: 1.1rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; }
         .description { font-size: 1.05rem; line-height: 1.8; color: #ccc; font-weight: 300; margin-bottom: 30px; max-width: 400px; }
 
