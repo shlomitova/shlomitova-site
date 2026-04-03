@@ -8,17 +8,15 @@
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
         
-        @media (min-width: 769px) {
-            .close-page { position: fixed; top: 25px; left: 40px; color: #fff; font-size: 40px; text-decoration: none; z-index: 3000; transition: 0.3s; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-            .close-page:hover { color: #c5a059; transform: scale(1.1); }
-        }
+        /* כפתור סגירה מהירה */
+        .close-page { position: fixed; top: 25px; left: 40px; color: #fff; font-size: 40px; text-decoration: none; z-index: 3000; transition: 0.3s; }
+        .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
-        /* ניווט מעודכן */
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
         .nav-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
         .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
         .he-nav { display: block; font-size: 0.85rem; color: #aaa; }
-        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
         .nav-link:hover .he-nav, .nav-link.active .he-nav { color: #c5a059; }
 
         .gallery-section { padding: 120px 10% 60px; }
@@ -29,7 +27,6 @@
         .gallery-item { cursor: pointer; transition: 0.3s; }
         .image-container { position: relative; width: 100%; height: 250px; overflow: hidden; background: #111; border: 1px solid #222; }
         .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .gallery-item:hover img { transform: scale(1.03); }
         .item-caption { margin-top: 15px; text-align: right; }
         .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
         .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
@@ -70,12 +67,10 @@
     <script>
         async function loadGallery() {
             try {
-                // טעינה עם מנגנון מניעת Cache כדי לראות עדכונים מה-Admin מיד
                 const response = await fetch('birds.json?t=' + new Date().getTime());
                 const data = await response.json();
                 const grid = document.getElementById('galleryGrid');
                 grid.innerHTML = ''; 
-                
                 data.forEach(item => {
                     grid.innerHTML += `
                         <div class="gallery-item" onclick="openLightboxManual('${item.src}')">
@@ -84,12 +79,9 @@
                                 <span class="cap-he">${item.titleHe}</span>
                                 <span class="cap-en">${item.titleEn}</span>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 });
-            } catch (err) {
-                console.error("שגיאה בטעינת התמונות:", err);
-            }
+            } catch (err) { console.error(err); }
         }
 
         function openLightboxManual(src) { 
@@ -103,11 +95,15 @@
             document.body.style.overflow = 'auto'; 
         }
 
+        // פונקציית ESC המשולבת
         window.addEventListener('keydown', (e) => {
             if (e.key === "Escape" || e.keyCode === 27) {
                 const lightbox = document.getElementById('lightbox');
-                if (lightbox.classList.contains('active')) closeLightbox();
-                else if (window.innerWidth > 768) window.location.href = "index.html";
+                if (lightbox.classList.contains('active')) {
+                    closeLightbox();
+                } else if (window.innerWidth > 768) {
+                    window.location.href = "index.html";
+                }
             }
         }, true);
 
