@@ -37,11 +37,11 @@
             .hero-content h1 { font-size: 4.5rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
             
             nav { 
-                position: absolute; top: 40px; right: 18%; 
-                display: flex; gap: 50px; 
+                position: absolute; top: 40px; right: 5%; 
+                display: flex; gap: 30px; 
             }
-            .he-nav { display: block; font-size: 1.3rem; letter-spacing: 1px; }
-            .en-nav { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+            .he-nav { display: block; font-size: 1.1rem; letter-spacing: 1px; }
+            .en-nav { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
         }
 
         /* --- הגדרות לנייד (Mobile) --- */
@@ -55,11 +55,12 @@
             
             nav { 
                 position: absolute; 
-                top: 25px; 
+                top: 20px; 
                 left: 50%; 
                 transform: translateX(-50%); 
                 display: flex; 
-                gap: 20px; 
+                flex-wrap: wrap; /* מאפשר לקישורים לרדת שורה אם אין מקום */
+                gap: 15px; 
                 width: 95%; 
                 justify-content: center;
                 z-index: 10;
@@ -67,13 +68,13 @@
 
             .he-nav { 
                 display: block; 
-                font-size: 1.1rem; 
+                font-size: 0.9rem; 
                 font-weight: 500;
                 text-shadow: 2px 2px 8px rgba(0,0,0,1); 
             }
             .en-nav { 
                 display: block; 
-                font-size: 0.65rem; 
+                font-size: 0.6rem; 
                 color: rgba(255,255,255,1); 
                 text-transform: uppercase; 
                 letter-spacing: 1px; 
@@ -142,18 +143,20 @@
 
     <section class="hero">
         <nav>
-            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
-            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
             <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="astronomy.html" class="nav-link"><span class="he-nav">אסטרונומיה</span><span class="en-nav">Astronomy</span></a>
+            <a href="landscapes.html" class="nav-link"><span class="he-nav">נוף</span><span class="en-nav">Landscapes</span></a>
+            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
             <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
         </nav>
 
         <div class="hero-content">
             <h1>SHLOMI TOVA</h1>
-            <p class="sub-title">Wildlife Photography</p>
+            <p class="sub-title">Wildlife & Astrophotography</p>
             <p class="description">
-                מתעד את רגעי הקסם של הטבע הפראי בישראל דרך העדשה. 
-                מתמחה בצילום בעלי חיים וציפורים בסביבתן הטבעית.
+                מתעד את רגעי הקסם של הטבע הפראי וגרמי השמיים דרך העדשה. 
+                מתמחה בצילום בעלי חיים, ציפורים ואסטרופוטוגרפיה.
             </p>
         </div>
 
@@ -163,7 +166,6 @@
     <script>
         function goToAdmin() {
             const pass = prompt("אנא הכנס סיסמת מנהל:");
-            // הסיסמה כרגע היא 1234
             if (pass === "1234") {
                 window.location.href = "admin.html";
             } else if (pass !== null) {
