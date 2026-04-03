@@ -3,20 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birds | Shlomi Tova</title>
+    <title>Gallery | Shlomi Tova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
         
-        /* כפתור סגירה מהירה */
-        .close-page { position: fixed; top: 25px; left: 40px; color: #fff; font-size: 40px; text-decoration: none; z-index: 3000; transition: 0.3s; }
+        /* כפתור ה-X הגדול */
+        .close-page { 
+            position: fixed; 
+            top: 20px; 
+            left: 30px; 
+            color: rgba(255,255,255,0.7); 
+            font-size: 50px; 
+            text-decoration: none; 
+            z-index: 4000; /* הכי גבוה שיש */
+            transition: 0.3s; 
+            line-height: 1;
+        }
         .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
         .nav-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
         .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
         .he-nav { display: block; font-size: 0.85rem; color: #aaa; }
-        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
         .nav-link:hover .he-nav, .nav-link.active .he-nav { color: #c5a059; }
 
         .gallery-section { padding: 120px 10% 60px; }
@@ -27,11 +37,12 @@
         .gallery-item { cursor: pointer; transition: 0.3s; }
         .image-container { position: relative; width: 100%; height: 250px; overflow: hidden; background: #111; border: 1px solid #222; }
         .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        
         .item-caption { margin-top: 15px; text-align: right; }
         .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
         .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
 
-        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+        .lightbox { display: none; position: fixed; z-index: 5000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #333; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
@@ -41,7 +52,7 @@
 </head>
 <body>
 
-    <a href="index.html" class="close-page">&times;</a>
+    <a href="index.html" class="close-page" title="חזרה למסך הבית">&times;</a>
 
     <nav>
         <div class="nav-container">
@@ -55,7 +66,7 @@
     </nav>
 
     <section class="gallery-section">
-        <h1 class="section-title">ציפורים<span>BIRDS</span></h1>
+        <h1 class="section-title">גלריה<span>GALLERY</span></h1>
         <div id="galleryGrid" class="gallery-grid"></div>
     </section>
 
@@ -65,9 +76,12 @@
     </div>
 
     <script>
+        // שימוש ב-JSON המתאים (תשנה את השם לפי הדף)
+        const JSON_FILE = 'birds.json'; 
+
         async function loadGallery() {
             try {
-                const response = await fetch('birds.json?t=' + new Date().getTime());
+                const response = await fetch(JSON_FILE + '?t=' + new Date().getTime());
                 const data = await response.json();
                 const grid = document.getElementById('galleryGrid');
                 grid.innerHTML = ''; 
@@ -85,8 +99,9 @@
         }
 
         function openLightboxManual(src) { 
+            const lb = document.getElementById('lightbox');
             document.getElementById('lightbox-img').src = src; 
-            document.getElementById('lightbox').classList.add('active'); 
+            lb.classList.add('active'); 
             document.body.style.overflow = 'hidden'; 
         }
         
@@ -95,17 +110,18 @@
             document.body.style.overflow = 'auto'; 
         }
 
-        // פונקציית ESC המשולבת
-        window.addEventListener('keydown', (e) => {
-            if (e.key === "Escape" || e.keyCode === 27) {
+        // --- התיקון ל-ESC (גרסה אלימה יותר) ---
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) { // 27 זה ESC
                 const lightbox = document.getElementById('lightbox');
-                if (lightbox.classList.contains('active')) {
+                if (lightbox && lightbox.classList.contains('active')) {
                     closeLightbox();
-                } else if (window.innerWidth > 768) {
+                } else {
                     window.location.href = "index.html";
                 }
             }
-        }, true);
+        };
 
         loadGallery();
     </script>
