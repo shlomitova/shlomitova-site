@@ -1,129 +1,59 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | Shlomi Tova</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
-        
-        /* כפתור ה-X הגדול */
-        .close-page { 
-            position: fixed; 
-            top: 20px; 
-            left: 30px; 
-            color: rgba(255,255,255,0.7); 
-            font-size: 50px; 
-            text-decoration: none; 
-            z-index: 4000; /* הכי גבוה שיש */
-            transition: 0.3s; 
-            line-height: 1;
+<script>
+    const JSON_FILE = 'birds.json'; // תשנה לפי שם הדף (mammals.json וכו')
+
+    async function loadGallery() {
+        try {
+            const response = await fetch(JSON_FILE + '?t=' + new Date().getTime());
+            const data = await response.json();
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = ''; 
+            data.forEach(item => {
+                grid.innerHTML += `
+                    <div class="gallery-item" onclick="openLightboxManual('${item.src}')">
+                        <div class="image-container"><img src="${item.src}"></div>
+                        <div class="item-caption">
+                            <span class="cap-he">${item.titleHe}</span>
+                            <span class="cap-en">${item.titleEn}</span>
+                        </div>
+                    </div>`;
+            });
+        } catch (err) { console.error(err); }
+    }
+
+    function openLightboxManual(src) { 
+        const lb = document.getElementById('lightbox');
+        document.getElementById('lightbox-img').src = src; 
+        lb.classList.add('active'); 
+        document.body.style.overflow = 'hidden'; 
+    }
+    
+    function closeLightbox() { 
+        const lb = document.getElementById('lightbox');
+        if (lb) {
+            lb.classList.remove('active'); 
+            document.body.style.overflow = 'auto';
         }
-        .close-page:hover { color: #c5a059; transform: scale(1.1); }
+    }
 
-        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
-        .nav-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
-        .he-nav { display: block; font-size: 0.85rem; color: #aaa; }
-        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-        .nav-link:hover .he-nav, .nav-link.active .he-nav { color: #c5a059; }
-
-        .gallery-section { padding: 120px 10% 60px; }
-        .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
-        .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .gallery-item { cursor: pointer; transition: 0.3s; }
-        .image-container { position: relative; width: 100%; height: 250px; overflow: hidden; background: #111; border: 1px solid #222; }
-        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        
-        .item-caption { margin-top: 15px; text-align: right; }
-        .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
-        .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
-
-        .lightbox { display: none; position: fixed; z-index: 5000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #333; }
-        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
-
-        @media (max-width: 768px) { .close-page { display: none; } }
-    </style>
-</head>
-<body>
-
-    <a href="index.html" class="close-page" title="חזרה למסך הבית">&times;</a>
-
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
-            <a href="birds.html" class="nav-link active"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
-            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
-            <a href="astronomy.html" class="nav-link"><span class="he-nav">אסטרונומיה</span><span class="en-nav">Astronomy</span></a>
-            <a href="landscapes.html" class="nav-link"><span class="he-nav">נוף</span><span class="en-nav">Landscapes</span></a>
-            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
-        </div>
-    </nav>
-
-    <section class="gallery-section">
-        <h1 class="section-title">גלריה<span>GALLERY</span></h1>
-        <div id="galleryGrid" class="gallery-grid"></div>
-    </section>
-
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" onclick="event.stopPropagation()">
-    </div>
-
-    <script>
-        // שימוש ב-JSON המתאים (תשנה את השם לפי הדף)
-        const JSON_FILE = 'birds.json'; 
-
-        async function loadGallery() {
-            try {
-                const response = await fetch(JSON_FILE + '?t=' + new Date().getTime());
-                const data = await response.json();
-                const grid = document.getElementById('galleryGrid');
-                grid.innerHTML = ''; 
-                data.forEach(item => {
-                    grid.innerHTML += `
-                        <div class="gallery-item" onclick="openLightboxManual('${item.src}')">
-                            <div class="image-container"><img src="${item.src}"></div>
-                            <div class="item-caption">
-                                <span class="cap-he">${item.titleHe}</span>
-                                <span class="cap-en">${item.titleEn}</span>
-                            </div>
-                        </div>`;
-                });
-            } catch (err) { console.error(err); }
-        }
-
-        function openLightboxManual(src) { 
-            const lb = document.getElementById('lightbox');
-            document.getElementById('lightbox-img').src = src; 
-            lb.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-        }
-        
-        function closeLightbox() { 
-            document.getElementById('lightbox').classList.remove('active'); 
-            document.body.style.overflow = 'auto'; 
-        }
-
-        // --- התיקון ל-ESC (גרסה אלימה יותר) ---
-        document.onkeydown = function(evt) {
-            evt = evt || window.event;
-            if (evt.keyCode == 27) { // 27 זה ESC
-                const lightbox = document.getElementById('lightbox');
-                if (lightbox && lightbox.classList.contains('active')) {
-                    closeLightbox();
-                } else {
-                    window.location.href = "index.html";
-                }
+    // --- המנגנון הכי חזק ל-ESC ---
+    // אנחנו משתמשים ב-Capture (true) כדי לתפוס את המקש לפני שכל אלמנט אחר באתר נוגע בו
+    window.addEventListener('keydown', function(e) {
+        if (e.key === "Escape" || e.keyCode === 27) {
+            e.preventDefault(); // מונע מהדפדפן לעשות פעולות אחרות
+            
+            const lightbox = document.getElementById('lightbox');
+            
+            // בדיקה אם הלייטבוקס פתוח
+            if (lightbox && lightbox.classList.contains('active')) {
+                closeLightbox();
+                console.log("Lightbox closed via ESC");
+            } else {
+                // אם הוא סגור - עוברים לדף הבית מיד
+                console.log("Redirecting to home via ESC");
+                window.location.href = "index.html";
             }
-        };
+        }
+    }, true); // ה-true כאן הוא קריטי!
 
-        loadGallery();
-    </script>
-</body>
-</html>
+    loadGallery();
+</script>
