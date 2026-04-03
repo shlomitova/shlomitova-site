@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscapes | Shlomi Tova</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
+        
+        /* תפריט ניווט עליון */
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
+        .nav-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
+        .he-nav { display: block; font-size: 0.85rem; color: #aaa; }
+        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+        .nav-link:hover .he-nav, .nav-link.active .he-nav { color: #c5a059; }
+        .nav-link:hover .en-nav, .nav-link.active .en-nav { color: #fff; }
+
+        /* כותרת הדף */
+        .gallery-section { padding: 120px 8% 60px; }
+        .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
+        .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
+
+        /* גריד התמונות */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .gallery-item { cursor: pointer; transition: 0.4s; background: #111; padding-bottom: 15px; border-radius: 4px; overflow: hidden; }
+        .image-container { position: relative; width: 100%; padding-top: 60%; overflow: hidden; }
+        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* כיתוב תחתון לתמונה */
+        .item-caption { padding: 15px 15px 5px; text-align: right; }
+        .cap-he { display: block; font-size: 1.1rem; font-weight: 300; margin-bottom: 5px; }
+        .cap-en { display: block; font-size: 0.75rem; color: #c5a059; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Lightbox (הצגת תמונה גדולה) */
+        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 92%; max-height: 92%; box-shadow: 0 0 50px rgba(0,0,0,0.5); border: 1px solid #222; }
+        .close-lightbox { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 45px; cursor: pointer; transition: 0.3s; opacity: 0.6; }
+        .close-lightbox:hover { opacity: 1; color: #c5a059; }
+
+        /* הודעת טעינה/שגיאה */
+        #status-msg { text-align: center; color: #666; font-size: 1rem; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
+            <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
+            <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
+            <a href="astronomy.html" class="nav-link"><span class="he-nav">אסטרונומיה</span><span class="en-nav">Astronomy</span></a>
+            <a href="landscapes.html" class="nav-link active"><span class="he-nav">נוף</span><span class="en-nav">Landscapes</span></a>
+            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
+            <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
+        </div>
+    </nav>
+
+    <section class="gallery-section">
+        <h1 class="section-title">נופים<span>LANDSCAPES</span></h1>
+        <div id="status-msg">טוען גלריה...</div>
+        <div id="galleryGrid" class="gallery-grid"></div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+        // פונקציה לטעינת התמונות מה-JSON
+        async function loadLandscapes() {
+            const grid = document.getElementById('galleryGrid');
+            const status = document.getElementById('status-msg');
+
+            try {
+                // משיכת הקובץ landscapes.json
+                const response = await fetch('landscapes.json?t=' + new Date().getTime());
+                
+                if (!response.ok) throw new Error("קובץ הנתונים לא נמצא");
+                
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    status.innerText = "עדיין אין תמונות בקטגוריה זו.";
+                    return;
+                }
+
+                status.style.display = 'none'; // הסתרת הודעת הטעינה
+                grid.innerHTML = ''; // ניקוי הגריד
+
+                // יצירת האלמנטים לכל תמונה
+                data.forEach(item => {
+                    const itemHtml = `
+                        <div class="gallery-item" onclick="openLightboxManual('${item.src}')">
+                            <div class="image-container">
+                                <img src="${item.src}" alt="${item.titleHe}" loading="lazy">
+                            </div>
+                            <div class="item-caption">
+                                <span class="cap-he">${item.titleHe}</span>
+                                <span class="cap-en">${item.titleEn}</span>
+                            </div>
+                        </div>
+                    `;
+                    grid.innerHTML += itemHtml;
+                });
+
+            } catch (err) {
+                console.error("Error loading gallery:", err);
+                status.innerText = "שגיאה בטעינת התמונות. וודא שקיים קובץ landscapes.json בשרת.";
+                status.style.color = "#ff4444";
+            }
+        }
+
+        // פונקציות ה-Lightbox
+        function openLightboxManual(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // סגירה עם מקש ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeLightbox();
+        });
+
+        // הרצה בטעינת הדף
+        window.onload = loadLandscapes;
+    </script>
+
+</body>
+</html>
