@@ -1,22 +1,27 @@
 [
   {
     "src": "common_kestrel.jpg",
-    "titleHe": "בז מצוי",
+    "titleHe": "×× ××¦××",
     "titleEn": "Common Kestrel"
   },
   {
     "src": "male_montagus_harrier.jpg",
-    "titleHe": "זרוע שדות",
+    "titleHe": "××¨××¢ ×©×××ª",
     "titleEn": "Montagu's Harrier"
   },
   {
     "src": "white_fronted_goose.jpg",
-    "titleHe": "אווז לבן-מצח",
+    "titleHe": "×××× ×××-××¦×",
     "titleEn": "White-fronted Goose"
   },
   {
     "src": "male_hen_harrier.jpg",
-    "titleHe": "זרוע תכול",
+    "titleHe": "××¨××¢ ×ª×××",
     "titleEn": "Hen Harrier"
+  },
+  {
+    "src": "_DSC7295.jpg",
+    "titleHe": "שקנאי",
+    "titleEn": ""
   }
 ]
