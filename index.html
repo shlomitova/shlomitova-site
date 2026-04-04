@@ -7,55 +7,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
+        .hero { height: 100vh; display: flex; flex-direction: column; background-size: cover; background-position: center center; position: relative; }
+
+        /* ניווט משופר שמתאים גם לאייפון */
+        nav { 
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%); 
+            display: flex; flex-wrap: wrap; gap: 12px; width: 95%; justify-content: center; z-index: 100; 
+        }
+        .nav-link { text-decoration: none; color: #fff; text-align: center; transition: 0.3s; padding: 5px; }
+        .he-nav { display: block; font-size: 0.85rem; font-weight: 500; text-shadow: 1px 1px 5px #000; }
+        .en-nav { display: block; font-size: 0.55rem; color: #ccc; text-transform: uppercase; }
         
-        .hero { 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
+        /* עיצוב מיוחד לכפתור הניהול בתפריט */
+        .admin-link .he-nav { color: #c5a059; }
+        .admin-link:hover .he-nav { color: #fff; }
 
-        /* --- הגדרות למחשב (Desktop) --- */
+        /* תוכן מרכזי */
+        .hero-content { position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 90%; }
+        h1 { font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 5px; font-weight: 200; text-shadow: 2px 2px 10px #000; }
+        .sub-title { font-size: 0.9rem; color: #c5a059; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; }
+        .description { font-size: 0.95rem; line-height: 1.6; color: #ddd; max-width: 500px; margin: 0 auto; text-shadow: 1px 1px 5px #000; }
+
         @media (min-width: 769px) {
-            .hero { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); }
-            .hero-content { 
-                position: absolute; top: 50%; left: 18%; 
-                transform: translateY(-50%); text-align: center; 
-                max-width: 600px; display: flex; flex-direction: column; align-items: center; 
-            }
-            .hero-content h1 { font-size: 4.5rem; font-weight: 200; letter-spacing: 15px; margin-bottom: 5px; text-transform: uppercase; white-space: nowrap; }
-            nav { position: absolute; top: 40px; right: 5%; display: flex; gap: 30px; }
-            .he-nav { display: block; font-size: 1.1rem; letter-spacing: 1px; }
-            .en-nav { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+            h1 { font-size: 4.5rem; letter-spacing: 15px; }
+            nav { top: 40px; gap: 30px; }
+            .he-nav { font-size: 1.1rem; }
+            .hero-content { top: 50%; }
         }
-
-        /* --- הגדרות לנייד (Mobile / iPhone) --- */
-        @media (max-width: 768px) {
-            .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ibex.jpg'); align-items: center; justify-content: flex-end; padding-bottom: 60px; }
-            nav { 
-                position: absolute; top: 20px; left: 50%; transform: translateX(-50%); 
-                display: flex; flex-wrap: wrap; gap: 12px; width: 95%; justify-content: center; z-index: 10; 
-            }
-            .he-nav { display: block; font-size: 0.9rem; font-weight: 500; text-shadow: 2px 2px 8px rgba(0,0,0,1); }
-            .en-nav { display: block; font-size: 0.6rem; color: #fff; text-transform: uppercase; text-shadow: 1px 1px 5px rgba(0,0,0,1); }
-            .hero-content { text-align: center; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 40px 10px; }
-            .hero-content h1 { font-size: 2.3rem; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,1); }
-        }
-
-        /* עיצוב כללי של התוכן */
-        .sub-title { font-size: 1.2rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
-        .description { font-size: 1.1rem; line-height: 1.8; color: #eee; font-weight: 300; margin-bottom: 30px; max-width: 500px; }
-        .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
-        .nav-link:hover { color: #c5a059; transform: translateY(-2px); }
-
     </style>
 </head>
 <body>
 
-    <section class="hero">
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('ibex.jpg');">
         <nav>
             <a href="birds.html" class="nav-link"><span class="he-nav">ציפורים</span><span class="en-nav">Birds</span></a>
             <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
@@ -63,20 +46,17 @@
             <a href="landscapes.html" class="nav-link"><span class="he-nav">נוף</span><span class="en-nav">Landscapes</span></a>
             <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
             <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
+            <a href="#" class="nav-link admin-link" onclick="openAdmin(); return false;"><span class="he-nav">ניהול</span><span class="en-nav">Admin</span></a>
         </nav>
 
         <div class="hero-content">
             <h1>SHLOMI TOVA</h1>
             <p class="sub-title">Nature, Landscape & Astro Photography</p>
-            <p class="description">
-                מתעד את רגעי הקסם של הטבע הפראי, נופים עוצרי נשימה וגרמי השמיים דרך העדשה. 
-                מתמחה בצילום בעלי חיים, ציפורים, נוף ואסטרופוטוגרפיה.
-            </p>
+            <p class="description">מתעד את רגעי הקסם של הטבע הפראי, נופים עוצרי נשימה וגרמי השמיים דרך העדשה.</p>
         </div>
     </section>
 
     <script>
-        // פונקציית הכניסה לניהול
         function openAdmin() {
             const pass = prompt("אנא הכנס סיסמת מנהל:");
             if (pass === "1234") {
@@ -85,14 +65,6 @@
                 alert("סיסמה שגויה");
             }
         }
-
-        // האזנה למקלדת - לחיצה על האות L תפתח את חלונית הסיסמה
-        document.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'l') {
-                openAdmin();
-            }
-        });
     </script>
-
 </body>
 </html>
