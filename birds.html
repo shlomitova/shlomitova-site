@@ -10,19 +10,13 @@
         
         /* כפתור ה-X הגדול לסגירה מהירה */
         .close-page { 
-            position: fixed; 
-            top: 20px; 
-            left: 30px; 
-            color: rgba(255,255,255,0.6); 
-            font-size: 50px; 
-            text-decoration: none; 
-            z-index: 4000; 
-            transition: 0.3s; 
-            line-height: 1;
+            position: fixed; top: 20px; left: 30px; 
+            color: rgba(255,255,255,0.6); font-size: 50px; 
+            text-decoration: none; z-index: 4000; 
+            transition: 0.3s; line-height: 1;
         }
         .close-page:hover { color: #c5a059; transform: scale(1.1); }
 
-        /* ניווט עליון */
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
         .nav-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
         .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
@@ -30,7 +24,6 @@
         .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
         .nav-link:hover .he-nav, .nav-link.active .he-nav { color: #c5a059; }
 
-        /* גלריה */
         .gallery-section { padding: 120px 10% 60px; }
         .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
         .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
@@ -45,13 +38,23 @@
         .cap-he { display: block; font-size: 1.1rem; font-weight: 300; }
         .cap-en { display: block; font-size: 0.8rem; color: #c5a059; letter-spacing: 1px; }
 
-        /* לייטבוקס */
+        /* לייטבוקס מעודכן עם חצים */
         .lightbox { display: none; position: fixed; z-index: 5000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #333; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
 
-        @media (max-width: 768px) { .close-page { display: none; } }
+        .nav-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: #fff; font-size: 40px; cursor: pointer;
+            padding: 20px; transition: 0.3s; opacity: 0.5;
+            user-select: none;
+        }
+        .nav-arrow:hover { opacity: 1; color: #c5a059; }
+        .prev-arrow { right: 20px; } /* ימין בגלל RTL */
+        .next-arrow { left: 20px; }
+
+        @media (max-width: 768px) { .close-page { display: none; } .nav-arrow { font-size: 30px; padding: 10px; } }
     </style>
 </head>
 <body>
@@ -76,21 +79,28 @@
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        
+        <div class="nav-arrow prev-arrow" onclick="changeImage(-1, event)"><i class="fas fa-chevron-right"></i></div>
+        <div class="nav-arrow next-arrow" onclick="changeImage(1, event)"><i class="fas fa-chevron-left"></i></div>
+
         <img id="lightbox-img" onclick="event.stopPropagation()">
     </div>
 
     <script>
         const JSON_FILE = 'birds.json'; 
+        let allImages = [];
+        let currentIndex = 0;
 
         async function loadGallery() {
             try {
                 const response = await fetch(JSON_FILE + '?t=' + new Date().getTime());
-                const data = await response.json();
+                allImages = await response.json();
                 const grid = document.getElementById('galleryGrid');
                 grid.innerHTML = ''; 
-                data.forEach(item => {
+                
+                allImages.forEach((item, index) => {
                     grid.innerHTML += `
-                        <div class="gallery-item" onclick="openLightboxManual('${item.src}')">
+                        <div class="gallery-item" onclick="openLightboxManual(${index})">
                             <div class="image-container"><img src="${item.src}"></div>
                             <div class="item-caption">
                                 <span class="cap-he">${item.titleHe}</span>
@@ -101,11 +111,28 @@
             } catch (err) { console.error("Error loading JSON:", err); }
         }
 
-        function openLightboxManual(src) { 
+        function openLightboxManual(index) { 
+            currentIndex = index;
+            updateLightboxImage();
             const lb = document.getElementById('lightbox');
-            document.getElementById('lightbox-img').src = src; 
             lb.classList.add('active'); 
             document.body.style.overflow = 'hidden'; 
+        }
+
+        function updateLightboxImage() {
+            const imgElement = document.getElementById('lightbox-img');
+            imgElement.src = allImages[currentIndex].src;
+        }
+
+        function changeImage(step, event) {
+            if (event) event.stopPropagation();
+            currentIndex += step;
+            
+            // לולאה - אם הגענו לסוף נחזור להתחלה
+            if (currentIndex >= allImages.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = allImages.length - 1;
+            
+            updateLightboxImage();
         }
         
         function closeLightbox() { 
@@ -116,17 +143,21 @@
             }
         }
 
-        // --- התיקון האולטימטיבי ל-ESC ---
+        // ניהול מקלדת: ESC, חץ ימינה, חץ שמאלה
         window.addEventListener('keydown', function(e) {
+            const lb = document.getElementById('lightbox');
+            const isActive = lb && lb.classList.contains('active');
+
             if (e.key === "Escape" || e.keyCode === 27) {
-                const lb = document.getElementById('lightbox');
-                if (lb && lb.classList.contains('active')) {
-                    closeLightbox();
-                } else {
-                    window.location.href = "index.html";
-                }
+                if (isActive) closeLightbox();
+                else window.location.href = "index.html";
             }
-        }, true); // ה-true מבטיח שזה ייתפס ראשון
+            
+            if (isActive) {
+                if (e.key === "ArrowRight") changeImage(-1); // ב-RTL ימין זה קודם
+                if (e.key === "ArrowLeft") changeImage(1);  // ושמאל זה הבא
+            }
+        }, true);
 
         loadGallery();
     </script>
