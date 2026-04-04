@@ -6,40 +6,39 @@
     <title>Astronomy | Shlomi Tova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; scroll-behavior: smooth; }
-        
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #050505; color: #fff; }
+        .close-page { position: fixed; top: 20px; left: 30px; color: rgba(255,255,255,0.6); font-size: 50px; text-decoration: none; z-index: 4000; transition: 0.3s; line-height: 1; }
+        .close-page:hover { color: #c5a059; transform: scale(1.1); }
         nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(5, 5, 5, 0.9); padding: 15px 0; border-bottom: 1px solid #1a1a1a; backdrop-filter: blur(10px); }
-        .nav-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .nav-link { text-align: center; text-decoration: none; transition: 0.3s; }
+        .nav-container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .nav-link { text-decoration: none; transition: 0.3s; text-align: center; }
         .he-nav { display: block; font-size: 0.85rem; color: #aaa; }
-        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+        .en-nav { display: block; font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
         .nav-link:hover .he-nav, .nav-link.active .he-nav { color: #c5a059; }
-
-        .gallery-section { padding: 120px 8% 60px; }
+        .gallery-section { padding: 120px 10% 60px; }
         .section-title { text-align: center; font-size: 2.2rem; letter-spacing: 5px; margin-bottom: 60px; font-weight: 200; text-transform: uppercase; }
         .section-title span { display: block; font-size: 0.85rem; color: #c5a059; margin-top: 12px; letter-spacing: 3px; }
-
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .gallery-item { cursor: pointer; transition: 0.4s; background: #111; padding-bottom: 15px; border-radius: 4px; overflow: hidden; }
-        .image-container { position: relative; width: 100%; padding-top: 60%; overflow: hidden; }
-        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
-        .gallery-item:hover img { transform: scale(1.05); }
-
-        .item-caption { padding: 15px 15px 5px; text-align: right; }
-        .cap-he { display: block; font-size: 1.1rem; font-weight: 300; margin-bottom: 5px; }
-        .cap-en { display: block; font-size: 0.75rem; color: #c5a059; text-transform: uppercase; letter-spacing: 1px; }
-
-        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); align-items: center; justify-content: center; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .gallery-item { cursor: pointer; }
+        .image-container { position: relative; width: 100%; height: 250px; overflow: hidden; background: #111; border: 1px solid #222; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .gallery-item:hover img { transform: scale(1.03); }
+        .item-caption { margin-top: 15px; text-align: right; }
+        .cap-he { display: block; font-size: 1.1rem; }
+        .cap-en { display: block; font-size: 0.8rem; color: #c5a059; }
+        .lightbox { display: none; position: fixed; z-index: 5000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 92%; max-height: 92%; border: 1px solid #222; }
-        .close-lightbox { position: absolute; top: 25px; right: 35px; color: #fff; font-size: 45px; cursor: pointer; opacity: 0.6; }
-        .close-lightbox:hover { opacity: 1; color: #c5a059; }
-
-        #status-msg { text-align: center; color: #666; font-size: 1rem; margin-top: 50px; }
+        .lightbox img { max-width: 90%; max-height: 90%; border: 1px solid #333; }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 50px; cursor: pointer; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 40px; cursor: pointer; padding: 20px; transition: 0.3s; opacity: 0.5; user-select: none; }
+        .nav-arrow:hover { opacity: 1; color: #c5a059; }
+        .prev-arrow { right: 20px; }
+        .next-arrow { left: 20px; }
+        @media (max-width: 768px) { .close-page { display: none; } }
     </style>
 </head>
 <body>
-
+    <a href="index.html" class="close-page" title="חזרה למסך הבית">&times;</a>
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-link"><span class="he-nav">בית</span><span class="en-nav">Home</span></a>
@@ -47,73 +46,43 @@
             <a href="mammals.html" class="nav-link"><span class="he-nav">יונקים</span><span class="en-nav">Mammals</span></a>
             <a href="astronomy.html" class="nav-link active"><span class="he-nav">אסטרונומיה</span><span class="en-nav">Astronomy</span></a>
             <a href="landscapes.html" class="nav-link"><span class="he-nav">נוף</span><span class="en-nav">Landscapes</span></a>
-            <a href="about.html" class="nav-link"><span class="he-nav">אודות</span><span class="en-nav">About</span></a>
             <a href="contact.html" class="nav-link"><span class="he-nav">צור קשר</span><span class="en-nav">Contact</span></a>
         </div>
     </nav>
-
     <section class="gallery-section">
         <h1 class="section-title">אסטרונומיה<span>ASTRONOMY</span></h1>
-        <div id="status-msg">טוען גלריה...</div>
         <div id="galleryGrid" class="gallery-grid"></div>
     </section>
-
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-        <img id="lightbox-img" src="" onclick="event.stopPropagation()">
+        <div class="nav-arrow prev-arrow" onclick="changeImage(-1, event)"><i class="fas fa-chevron-right"></i></div>
+        <div class="nav-arrow next-arrow" onclick="changeImage(1, event)"><i class="fas fa-chevron-left"></i></div>
+        <img id="lightbox-img" onclick="event.stopPropagation()">
     </div>
-
     <script>
-        async function loadAstronomy() {
-            const grid = document.getElementById('galleryGrid');
-            const status = document.getElementById('status-msg');
-
+        const JSON_FILE = 'astronomy.json'; 
+        let allImages = []; let currentIndex = 0;
+        async function loadGallery() {
             try {
-                // שים לב: כאן הוא מושך מ-astronomy.json
-                const response = await fetch('astronomy.json?t=' + new Date().getTime());
-                if (!response.ok) throw new Error("File not found");
-                const data = await response.json();
-
-                if (data.length === 0) {
-                    status.innerText = "אין עדיין תמונות באסטרונומיה.";
-                    return;
-                }
-
-                status.style.display = 'none';
-                grid.innerHTML = '';
-
-                data.forEach(item => {
-                    grid.innerHTML += `
-                        <div class="gallery-item" onclick="openLightboxManual('${item.src}')">
-                            <div class="image-container">
-                                <img src="${item.src}" alt="${item.titleHe}" loading="lazy">
-                            </div>
-                            <div class="item-caption">
-                                <span class="cap-he">${item.titleHe}</span>
-                                <span class="cap-en">${item.titleEn}</span>
-                            </div>
-                        </div>`;
+                const response = await fetch(JSON_FILE + '?t=' + new Date().getTime());
+                allImages = await response.json();
+                const grid = document.getElementById('galleryGrid');
+                grid.innerHTML = ''; 
+                allImages.forEach((item, index) => {
+                    grid.innerHTML += `<div class="gallery-item" onclick="openLightboxManual(${index})"><div class="image-container"><img src="${item.src}"></div><div class="item-caption"><span class="cap-he">${item.titleHe}</span><span class="cap-en">${item.titleEn}</span></div></div>`;
                 });
-            } catch (err) {
-                status.innerText = "שגיאה בטעינת הקובץ astronomy.json";
-            }
+            } catch (err) { console.error(err); }
         }
-
-        function openLightboxManual(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', (e) => { if (e.key === "Escape") closeLightbox(); });
-
-        window.onload = loadAstronomy;
+        function openLightboxManual(index) { currentIndex = index; updateLightboxImage(); document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function updateLightboxImage() { document.getElementById('lightbox-img').src = allImages[currentIndex].src; }
+        function changeImage(step, event) { if (event) event.stopPropagation(); currentIndex += step; if (currentIndex >= allImages.length) currentIndex = 0; if (currentIndex < 0) currentIndex = allImages.length - 1; updateLightboxImage(); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        window.addEventListener('keydown', function(e) {
+            const isActive = document.getElementById('lightbox').classList.contains('active');
+            if (e.key === "Escape" || e.keyCode === 27) { if (isActive) closeLightbox(); else window.location.href = "index.html"; }
+            if (isActive) { if (e.key === "ArrowRight") changeImage(-1); if (e.key === "ArrowLeft") changeImage(1); }
+        }, true);
+        loadGallery();
     </script>
-
 </body>
 </html>
