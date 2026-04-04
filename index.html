@@ -6,10 +6,10 @@
     <title>Shlomi Tova | Nature & Landscape Photography</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- ה-CSS נשאר בדיוק אותו דבר כמו ששלחתי קודם --- */
         body, html { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #000; color: #fff; height: 100%; overflow: hidden; }
         .hero { height: 100vh; display: flex; flex-direction: column; background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative; }
         
+        /* --- Desktop --- */
         @media (min-width: 769px) {
             .hero { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ibex.jpg'); }
             .hero-content { position: absolute; top: 50%; left: 18%; transform: translateY(-50%); text-align: center; max-width: 600px; display: flex; flex-direction: column; align-items: center; }
@@ -17,22 +17,40 @@
             nav { position: absolute; top: 40px; right: 5%; display: flex; gap: 30px; }
             .he-nav { display: block; font-size: 1.1rem; letter-spacing: 1px; }
             .en-nav { display: block; font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+            .admin-trigger { position: absolute; bottom: 20px; right: 20px; color: rgba(255,255,255,0.2); }
         }
 
+        /* --- Mobile Fix for iPhone --- */
         @media (max-width: 768px) {
-            .hero { background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('ibex.jpg'); align-items: center; justify-content: flex-end; padding-bottom: 40px; }
-            nav { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-wrap: wrap; gap: 15px; width: 95%; justify-content: center; z-index: 10; }
-            .he-nav { display: block; font-size: 0.9rem; font-weight: 500; text-shadow: 2px 2px 8px rgba(0,0,0,1); }
-            .en-nav { display: block; font-size: 0.6rem; color: #fff; text-transform: uppercase; text-shadow: 1px 1px 5px rgba(0,0,0,1); }
+            .hero { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ibex.jpg'); align-items: center; justify-content: flex-end; padding-bottom: 80px; }
+            nav { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-wrap: wrap; gap: 12px; width: 95%; justify-content: center; z-index: 10; }
+            .he-nav { display: block; font-size: 0.85rem; font-weight: 500; text-shadow: 2px 2px 8px rgba(0,0,0,1); }
+            .en-nav { display: block; font-size: 0.55rem; color: #fff; text-transform: uppercase; }
             .hero-content { text-align: center; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 40px 10px; }
             .hero-content h1 { font-size: 2.2rem; letter-spacing: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,1); }
+            
+            /* כפתור אדמין בולט ונגיש באייפון */
+            .admin-trigger { 
+                position: absolute; 
+                bottom: 25px; 
+                left: 50%; 
+                transform: translateX(-50%); 
+                background: rgba(255,255,255,0.1); 
+                padding: 10px 20px; 
+                border-radius: 30px; 
+                border: 1px solid rgba(255,255,255,0.2);
+                color: #fff;
+                font-size: 0.8rem;
+            }
         }
 
         .sub-title { font-size: 1.2rem; color: #c5a059; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 25px; }
         .description { font-size: 1.1rem; line-height: 1.8; color: #eee; font-weight: 300; margin-bottom: 30px; max-width: 500px; }
         .nav-link { text-decoration: none; color: #fff; transition: 0.4s; text-align: center; }
         .nav-link:hover { color: #ffcc00; transform: translateY(-2px); }
-        .admin-trigger { position: absolute; bottom: 15px; right: 20px; color: rgba(255,255,255,0.15); text-decoration: none; font-size: 0.7rem; cursor: pointer; z-index: 100; }
+        
+        .admin-trigger { text-decoration: none; cursor: pointer; z-index: 100; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .admin-trigger:hover { color: #c5a059; border-color: #c5a059; }
     </style>
 </head>
 <body>
@@ -56,7 +74,9 @@
             </p>
         </div>
 
-        <div onclick="goToAdmin()" class="admin-trigger"><i class="fas fa-lock"></i> Admin Area</div>
+        <div onclick="goToAdmin()" class="admin-trigger">
+            <i class="fas fa-lock"></i> <span>Admin Access</span>
+        </div>
     </section>
 
     <script>
